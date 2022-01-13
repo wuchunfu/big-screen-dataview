@@ -1,0 +1,9 @@
+/*!
+ * 👁️ - 统一不同浏览器的基础样式
+ * https://github.com/hai2007/style.css/blob/master/normalize.css
+ *
+ * author hai2007 < https://hai2007.gitee.io/sweethome >
+ *
+ * Copyright (c) 2020-present hai2007 走一步，再走一步。
+ * Released under the MIT license
+ */html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;line-height:1.15}button,input{border:1px solid #b2b2bd}article,footer,header,nav,section{display:block}canvas,svg{display:inline-block}*{box-sizing:border-box}::-ms-clear,::-ms-reveal{display:none}img{display:inline-block}html{font-family:sans-serif}a{text-decoration:none}li{list-style-type:none}h1,h2,h3,h4,h5,h6,li,ol,p,ul{-webkit-margin-before:0;-webkit-margin-after:0;-webkit-padding-start:0;margin-block-end:0;margin-block-start:0;padding-inline-start:0;padding:0;margin:0}body{margin:0}table{border-collapse:collapse}
