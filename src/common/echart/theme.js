@@ -3,5 +3,7 @@
  */
 
 export default {
-
+    textStyle: {
+        color: '#ffffff'
+    }
 }

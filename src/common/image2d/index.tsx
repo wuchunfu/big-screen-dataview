@@ -18,7 +18,7 @@ export default defineComponent({
         // 创建图表对象
         onMounted(() => {
 
-            let _canvas = image2D(canvasRef)
+            let _canvas = image2D(canvasRef.value)
 
             let doUpdate = () => {
                 let size = xhtml.size(elRef.value)
