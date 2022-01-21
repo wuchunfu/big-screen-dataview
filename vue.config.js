@@ -9,5 +9,13 @@ module.exports = {
     productionSourceMap: false,
     devServer: {
         port: 20000
+    },
+    chainWebpack: config => {
+        config.module
+            .rule('c')
+            .test(/\.c$/)
+            .use('@etcpack/plain-loader')
+            .loader('@etcpack/plain-loader')
+            .end()
     }
 }
