@@ -2,7 +2,7 @@ import { defineComponent, ref, onMounted, onBeforeUnmount } from 'vue'
 import * as echarts from 'echarts'
 import observeResize from '../observeResize'
 import xhtml from '@hai2007/browser/xhtml'
-import theme from './theme.js'
+import theme from './theme'
 
 export default defineComponent({
     props: {

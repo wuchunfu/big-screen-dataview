@@ -13,10 +13,12 @@
   "dependencies": {
     "@hai2007/browser": "^0.2.0",
     "@hai2007/style": "^0.3.0",
+    "@hai2007/xhr": "^0.1.2",
     "echarts": "^5.2.2",
     "image2d": "^1.16.3",
     "image3d": "^3.3.1",
-    "vue": "^3.0.0"
+    "vue": "^3.0.0",
+    "vue-router": "^4.0.0-0"
   },
   "devDependencies": {
     "@etcpack/plain-loader": "^0.1.0",
