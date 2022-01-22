@@ -3,7 +3,9 @@ import App from './App.vue'
 
 // 引入全局样式
 import '@hai2007/style/normalize.css'
-import './assets/style.scss'
+import './style/common.scss'
+import './style/editor.scss'
+import './style/view.scss'
 
 // 引入路由
 import route from './pages/route'

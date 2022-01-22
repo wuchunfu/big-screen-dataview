@@ -1,4 +1,9 @@
-<template>编辑页面</template>
+<template>
+  <div class="editor-page">
+      <header></header>
+
+  </div>
+</template>
 <script lang="ts">
 import { defineComponent } from "vue";
 

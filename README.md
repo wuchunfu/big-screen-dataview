@@ -1,5 +1,5 @@
 # [big-screen-dataview](https://hai2007.github.io/big-screen-dataview/)
-基于vue3+ts搭建的搭配可视化项目，使用image2d、echart.js等多种绘图方式支持。
+基于vue3+ts搭建的搭配可视化项目，支持image2d、image3d、echart.js等多种绘图方式。
 
 ## Issues
 使用的时候遇到任何问题或有好的建议，请点击进入[issue](https://github.com/hai2007/big-screen-dataview/issues)，欢迎参与维护！
@@ -26,13 +26,9 @@ npm run build
 
 ## 通用组件
 
-为了方便使用，我们对依赖的库或别的依赖进行了二次封装（
-    [EChart](./src/common/echart/readme.md)
-    |
-     [Image2D](./src/common/image2d/readme.md)
-    |
-     [Image3D](./src/common/image3d/readme.md)
-）。
+为了方便使用，我们对依赖的库或别的依赖进行了二次封装：
+
+- [EChart](./src/common/echart/readme.md) | [Image2D](./src/common/image2d/readme.md) | [Image3D](./src/common/image3d/readme.md)
 
 开源协议
 ---------------------------------------

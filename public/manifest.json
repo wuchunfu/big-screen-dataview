@@ -1,0 +1,28 @@
+{
+    "short_name": "Big Screen Dataview",
+    "name": "大屏编辑器",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "./logo.png",
+            "type": "image/png",
+            "sizes": "48x48"
+        },
+        {
+            "src": "./logo.png",
+            "type": "image/png",
+            "sizes": "144x144"
+        },
+        {
+            "sizes": "192x192",
+            "src": "./logo.png",
+            "type": "image/png"
+        },
+        {
+            "sizes": "512x512",
+            "src": "./logo.png",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "./index.html"
+}

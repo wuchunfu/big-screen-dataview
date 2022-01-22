@@ -1,4 +1,8 @@
-<template>视图页面</template>
+<template>
+    <div class="view-page">
+
+    </div>
+</template>
 <script lang="ts">
 import { defineComponent } from "vue";
 
