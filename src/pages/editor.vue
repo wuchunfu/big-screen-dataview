@@ -5,20 +5,25 @@
     </header>
     <div>
       <div class="container">
-        <div>
-
-        </div>
+        <div></div>
       </div>
       <div class="config"></div>
     </div>
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, reactive } from "vue";
+import { DataView } from "../interface/DataView";
 
 export default defineComponent({
   setup() {
-    return {};
+    let dataView: DataView = reactive({
+      chartlist: [],
+    });
+
+    return {
+      dataView,
+    };
   },
 });
 </script>
