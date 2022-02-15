@@ -1,5 +1,9 @@
+import xhtml from '@hai2007/browser/xhtml';
+
 export default {
     mounted(el) {
-        console.log(el);
+
+        // todo
+
     }
 };

@@ -5,13 +5,21 @@
     </header>
     <div>
       <div class="container">
-        <div>
-          <!-- 一个个可以拖拽的小图表 -->
+        <div
+          :style="{
+            background:
+              dataView.background.type == 'color'
+                ? dataView.background.color
+                : 'url(' + dataView.background.image + ')',
+          }"
+        >
+          <!-- 一个个小图表 -->
           <div
             v-drag
             v-for="(item, index) in dataView.chartlist"
             :key="index"
-            style="outline: 1px dashed red; position: absolute"
+            @click="currentIndex = index"
+            style="outline: 1px dashed #f5f2f280; position: absolute"
             :style="{
               left: item.left + '%',
               top: item.top + '%',
@@ -21,71 +29,55 @@
           ></div>
         </div>
       </div>
-      <div class="config"></div>
+      <div class="config">
+        <!-- 全局视图配置 -->
+        <ui-view-config
+          v-model:background="dataView.background"
+        ></ui-view-config>
+
+        <!-- 当前选中的小图表配置 -->
+        <ui-chart-config></ui-chart-config>
+      </div>
     </div>
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, reactive } from "vue";
+import { defineComponent, reactive, ref } from "vue";
 import DataView from "../types/DataView";
+
 import vDrag from "../directives/v-drag";
+
+import uiViewConfig from "../components/ui-view-config.vue";
+import uiChartConfig from "../components/ui-chart-config.vue";
+
+import dataView_init from "../init/dataView";
 
 export default defineComponent({
   setup() {
     // 存储着大屏信息的对象
-    let dataView: DataView = reactive({
-      chartlist: [
-        {
-          width: 100,
-          height: 10,
-          left: 0,
-          top: 0,
-        },
-        {
-          width: 40,
-          height: 45,
-          left: 0,
-          top: 10,
-        },
-        {
-          width: 20,
-          height: 45,
-          left: 40,
-          top: 10,
-        },
-        {
-          width: 40,
-          height: 45,
-          left: 60,
-          top: 10,
-        },
-        {
-          width: 33.3,
-          height: 45,
-          left: 0,
-          top: 55,
-        },
-        {
-          width: 33.3,
-          height: 45,
-          left: 33.3,
-          top: 55,
-        },
-        {
-          width: 33.3,
-          height: 45,
-          left: 66.6,
-          top: 55,
-        },
-      ],
-    });
+    let dataView: DataView = reactive(dataView_init);
 
     return {
       dataView,
+      currentIndex: ref(-1),
     };
   },
   directives: {
     drag: vDrag,
   },
+  components: {
+    uiViewConfig,
+    uiChartConfig,
+  },
 });
 </script>
+<style lang="scss" scoped>
+.editor-page {
+  .container {
+    & > div {
+      background-size: cover !important;
+      background-position: center center !important;
+    }
+  }
+}
+</style>
