@@ -14,12 +14,13 @@ a {
   text-align: center;
   font-family: sans-serif;
   display: inline-block;
-  top: 67px;
-  right: -66px;
+  top: 42px;
+  right: -93px;
+  font-size: 12px;
   width: 300px;
-  background-color: #f44336;
-  outline: 4px solid #f44336;
-  border: 2px dashed #ffffff;
+  background-color: #000000;
+  outline: 2px solid #000000;
+  border: 1px dashed #ffffff;
   color: #ffffff;
   z-index: 1;
 }

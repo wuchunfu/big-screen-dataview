@@ -19,7 +19,7 @@
             v-for="(item, index) in dataView.chartlist"
             :key="index"
             @click="currentIndex = index"
-            style="outline: 1px dashed #ff0000; position: absolute"
+            style="position: absolute"
             :style="{
               left: item.left + '%',
               top: item.top + '%',
@@ -27,6 +27,11 @@
               height: item.height + '%',
             }"
           >
+            <!-- 边框 -->
+            <lazy-component
+              v-if="item.border.name != 'none'"
+              :is="borderLazy[item.border.name]"
+            ></lazy-component>
             <!-- 图表 -->
             <echart
               :options="item.chart.options"
@@ -52,7 +57,7 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, reactive, ref, watch } from "vue";
+import { defineComponent, reactive, ref } from "vue";
 import DataView from "../types/DataView";
 
 import vDrag from "../directives/v-drag";
@@ -61,6 +66,11 @@ import uiViewConfig from "../components/ui-view-config.vue";
 import uiChartConfig from "../components/ui-chart-config.vue";
 
 import dataView_init from "../init/dataView";
+
+// 懒加载组件
+import lazyComponent from "../components/lazy-component.vue";
+import borderLazy from "../components/border/lazy-load";
+import chartLazy from "../components/chart/lazy-load";
 
 export default defineComponent({
   setup() {
@@ -75,6 +85,8 @@ export default defineComponent({
       updateCurrentChart(val) {
         dataView.chartlist[currentIndex.value].chart = val;
       },
+      borderLazy: ref(borderLazy),
+      chartLazy: ref(chartLazy),
     };
   },
   directives: {
@@ -83,6 +95,7 @@ export default defineComponent({
   components: {
     uiViewConfig,
     uiChartConfig,
+    lazyComponent,
   },
 });
 </script>
