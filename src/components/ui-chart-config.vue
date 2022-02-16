@@ -1,12 +1,30 @@
 <template>
-  <div class="ui-chart-config"></div>
+  <div class="ui-chart-config">
+    <h4>图表</h4>
+    {{ chart }}
+  </div>
 </template>
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref, watch } from "vue";
+import { Chart } from "../types/ChartItem";
 
 export default defineComponent({
-  setup() {
-    return {};
+  props: {
+    modelValue: Chart,
+  },
+  setup(props) {
+    let chart = ref(props.modelValue);
+
+    watch(
+      () => props.modelValue,
+      (modelValue) => {
+        chart.value = modelValue;
+      }
+    );
+
+    return {
+      chart,
+    };
   },
 });
 </script>

@@ -19,14 +19,20 @@
             v-for="(item, index) in dataView.chartlist"
             :key="index"
             @click="currentIndex = index"
-            style="outline: 1px dashed #f5f2f280; position: absolute"
+            style="outline: 1px dashed #ff0000; position: absolute"
             :style="{
               left: item.left + '%',
               top: item.top + '%',
               width: item.width + '%',
               height: item.height + '%',
             }"
-          ></div>
+          >
+            <!-- 图表 -->
+            <echart
+              :options="item.chart.options"
+              v-if="item.chart.type == 'echart'"
+            ></echart>
+          </div>
         </div>
       </div>
       <div class="config">
@@ -36,7 +42,10 @@
         ></ui-view-config>
 
         <!-- 当前选中的小图表配置 -->
-        <ui-chart-config></ui-chart-config>
+        <ui-chart-config
+          v-if="currentIndex != -1"
+          v-model="dataView.chartlist[currentIndex].chart"
+        ></ui-chart-config>
       </div>
     </div>
   </div>
