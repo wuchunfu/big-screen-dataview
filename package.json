@@ -18,6 +18,7 @@
     "echarts": "^5.2.2",
     "image2d": "^1.16.3",
     "image3d": "^3.3.1",
+    "open-web-editor": "^0.3.2",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0"
   },

@@ -1,4 +1,4 @@
-import { defineComponent, ref, onMounted, onBeforeUnmount } from 'vue'
+import { defineComponent, ref, onMounted, onBeforeUnmount, watch } from 'vue'
 import * as echarts from 'echarts'
 import observeResize from '../observeResize'
 import xhtml from '@hai2007/browser/xhtml'
@@ -44,12 +44,19 @@ export default defineComponent({
             stopResize()
         })
 
-        // 对外暴露接口
-        expose({
-            setOption(options) {
+        // // 对外暴露接口
+        // expose({
+        //     setOption(options) {
+        //         chartRef.setOption(options)
+        //     }
+        // })
+
+        watch(
+            () => props.options,
+            (options) => {
                 chartRef.setOption(options)
             }
-        })
+        );
 
         return () => {
             return (<div ref={elRef} style={{

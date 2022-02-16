@@ -44,14 +44,15 @@
         <!-- 当前选中的小图表配置 -->
         <ui-chart-config
           v-if="currentIndex != -1"
-          v-model="dataView.chartlist[currentIndex].chart"
+          :modelValue="dataView.chartlist[currentIndex].chart"
+          @update:modelValue="updateCurrentChart"
         ></ui-chart-config>
       </div>
     </div>
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, reactive, ref } from "vue";
+import { defineComponent, reactive, ref, watch } from "vue";
 import DataView from "../types/DataView";
 
 import vDrag from "../directives/v-drag";
@@ -66,9 +67,14 @@ export default defineComponent({
     // 存储着大屏信息的对象
     let dataView: DataView = reactive(dataView_init);
 
+    let currentIndex = ref(-1);
+
     return {
       dataView,
-      currentIndex: ref(-1),
+      currentIndex,
+      updateCurrentChart(val) {
+        dataView.chartlist[currentIndex.value].chart = val;
+      },
     };
   },
   directives: {

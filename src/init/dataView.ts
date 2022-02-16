@@ -3,7 +3,7 @@ import DataView from '../types/DataView';
 let dataView: DataView = {
     background: {
         type: "color",
-        color: "",
+        color: "#000000",
         image: "",
     },
     chartlist: [

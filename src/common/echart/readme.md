@@ -34,10 +34,13 @@ div{
 </script>
 ```
 
-如何图表的配置后续有改变:
+如果图表的配置后续有改变:
 
-```js
-this.$refs.mychart.setOption({
-    // ...
-})
-```
+~~this.$refs.mychart.setOption({~~
+
+~~// todo~~
+
+~~})~~
+
+直接修改双向绑定的options即可。
+
