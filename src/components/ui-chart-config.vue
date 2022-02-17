@@ -2,17 +2,22 @@
   <div class="ui-chart-config">
     <h4>图表</h4>
     <div ref="uiChartConfig"></div>
-    <button @click="doUpdate">更新</button>
+    <button @click="doUpdate" style="display:none">更新</button>
+    <ui-toolbar/>
   </div>
 </template>
 <script lang="ts">
 import { defineComponent, ref, watch, onMounted } from "vue";
 const OpenWebEditor = require("open-web-editor");
 import { Chart } from "../types/ChartItem";
+import Toolbar from './ui-toolbar.vue'
 
 export default defineComponent({
   props: {
     modelValue: Chart,
+  },
+  components:{
+    [Toolbar.name]:Toolbar
   },
   setup(props, context) {
     let uiChartConfig = ref(null);
