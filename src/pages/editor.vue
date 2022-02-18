@@ -1,8 +1,5 @@
 <template>
   <div class="editor-page">
-    <header>
-      <h2>大屏编辑器</h2>
-    </header>
     <div>
       <div class="container">
         <div
@@ -42,13 +39,24 @@
           </div>
         </div>
       </div>
-      <div class="config">
-        <!-- 全局视图配置 -->
+      <div
+        class="config all"
+        defType="dialogFrame"
+        @mousedown="currentConfig = 'all'"
+        :style="{ zIndex: currentConfig == 'all' ? 2 : 1 }"
+      >
+        <h2 v-move>全局配置</h2>
         <ui-view-config
           v-model:background="dataView.background"
         ></ui-view-config>
-
-        <!-- 当前选中的小图表配置 -->
+      </div>
+      <div
+        class="config chart"
+        defType="dialogFrame"
+        @mousedown="currentConfig = 'chart'"
+        :style="{ zIndex: currentConfig == 'chart' ? 2 : 1 }"
+      >
+        <h2 v-move>选中配置</h2>
         <ui-chart-config
           v-if="currentIndex != -1"
           :modelValue="dataView.chartlist[currentIndex].chart"
@@ -84,6 +92,7 @@ export default defineComponent({
     return {
       dataView,
       currentIndex,
+      currentConfig: ref("all"),
       updateCurrentChart(val) {
         dataView.chartlist[currentIndex.value].chart = val;
       },
@@ -101,20 +110,3 @@ export default defineComponent({
   },
 });
 </script>
-<style lang="scss" scoped>
-.editor-page {
-  .container {
-    & > div {
-      background-size: cover !important;
-      background-position: center center !important;
-    }
-  }
-  .fill-view {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-  }
-}
-</style>

@@ -24,8 +24,8 @@ export default {
             let lf = event.clientX;
             let tp = event.clientY;
 
-            let left = (el.style.left).replace('px', '');
-            let top = (el.style.top).replace('px', '');
+            let left = (xhtml.getStyle(el, 'left')).replace('px', '');
+            let top = (xhtml.getStyle(el, 'top')).replace('px', '');
 
             //绑定鼠标移动事件
             function mousemove(event) {

@@ -1,40 +1,27 @@
 .editor-page {
-    &>header {
-        // box-shadow: 1px 7px 16px 0px #607d8b;
-        position: relative;
-        z-index: 1;
-        background-color: #607d8b;
 
-        &>h2 {
-            background-image: url('../image/logo.png');
-            background-repeat: no-repeat;
-            padding-left: 30px;
-            line-height: 30px;
-            display: inline-block;
-            background-position: 5px center;
-            background-size: auto 20px;
-            font-size: 18px;
-            color: white;
-
-        }
+    .fill-view {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
     }
 
     &>div {
-        display: flex;
-
         &>div {
-            height: calc(100vh - 30px);
-
             &.container {
-                flex-grow: 1;
                 position: relative;
                 overflow: hidden;
+                height: 100vh;
 
                 &>div {
                     position: relative;
                     z-index: 1;
                     height: 100%;
                     width: 100%;
+                    background-size: cover !important;
+                    background-position: center center !important;
                 }
 
                 &:after {
@@ -60,8 +47,36 @@
 
             &.config {
                 width: 300px;
-                border-left: 1px solid #f0f0f2;
                 overflow: auto;
+                position: fixed;
+                top: 50px;
+                z-index: 1;
+                background-color: white;
+                max-height: calc(100vh - 100px);
+                min-height: 200px;
+                box-shadow: 0 0 13px 0 #607d8b;
+                border-radius: 5px;
+
+                &.all {
+                    left: 50px;
+                }
+
+                &.chart {
+                    right: 50px;
+                }
+
+                &>h2 {
+                    background-color: #b1c3c1;
+                    background-size: auto 80%;
+                    background-position: 10px center;
+                    background-repeat: no-repeat;
+                    padding-left: 42px;
+                    font-size: 16px;
+                    line-height: 30px;
+                    user-select: none;
+                    cursor: move;
+                    background-image: url('../image/logo.png');
+                }
             }
         }
     }
