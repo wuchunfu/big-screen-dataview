@@ -30,7 +30,9 @@ npm run build
 
 为了方便使用，我们对依赖的库或别的依赖进行了二次封装：
 
-- [EChart](./src/common/echart/readme.md) | [Image2D](./src/common/image2d/readme.md) | [Image3D](./src/common/image3d/readme.md)
+- [EChart](./src/common/echart/readme.md) ：用于提供常用的图表
+- [Image2D](./src/common/image2d/readme.md) ：绘制一些特殊的图表
+- [Image3D](./src/common/image3d/readme.md) ：用于个性化的3D图形绘制
 
 ### 统一弹框设计
 
@@ -42,7 +44,7 @@ npm run build
 
 当然，新建完毕后，别忘了在```src/dialogs/lazy-load.ts```中进行懒加载注册。
 
-现在，已经可以试用这个弹框了，在这里，使用的例子就是：
+现在，已经可以使用这个弹框了，在这里，使用的例子就是：
 
 ```js
 this.$store.commit('openDialog', {
@@ -56,7 +58,7 @@ this.$store.commit('openDialog', {
 
 对于普通的弹框，到这里就可以了，不过，由于alert等比较特殊，经常使用到，由此，我们对一些常用的，进行了更简单的封装，下面列举一下：
 
-- alert(msg, title, funPos)
+- this.$alert(msg, title, funPos) ：一些小提示
 
 开源协议
 ---------------------------------------

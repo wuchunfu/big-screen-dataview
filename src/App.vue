@@ -69,12 +69,12 @@ a {
   text-align: center;
   font-family: sans-serif;
   display: inline-block;
-  top: 42px;
-  right: -93px;
+  bottom: 34px;
+  left: -117px;
   font-size: 12px;
   width: 300px;
-  background-color: #000000;
-  outline: 2px solid #000000;
+  background-color: #ee6666;
+  outline: 2px solid #ee6666;
   border: 1px dashed #ffffff;
   color: #ffffff;
   z-index: 1;
