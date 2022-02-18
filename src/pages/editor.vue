@@ -28,10 +28,12 @@
             }"
           >
             <!-- 边框 -->
-            <lazy-component
-              v-if="item.border.name != 'none'"
-              :is="borderLazy[item.border.name]"
-            ></lazy-component>
+            <div class="fill-view">
+              <lazy-component
+                v-if="item.border.name != 'none'"
+                :is="borderLazy[item.border.name]"
+              ></lazy-component>
+            </div>
             <!-- 图表 -->
             <echart
               :options="item.chart.options"
@@ -106,6 +108,13 @@ export default defineComponent({
       background-size: cover !important;
       background-position: center center !important;
     }
+  }
+  .fill-view {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
   }
 }
 </style>

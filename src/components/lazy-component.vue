@@ -1,15 +1,11 @@
 <template>
-  <div>
-    <component :is="instance"></component>
-  </div>
+  <component :is="instance" :data="data"></component>
 </template>
 <script lang="ts">
 import { defineComponent, ref, watch } from "vue";
 
 export default defineComponent({
-  props: {
-    is: Function,
-  },
+  props: ["is", "data"],
   setup(props) {
     let instance = ref(null);
     let toInstance = (ClazzFun) => {
@@ -29,16 +25,8 @@ export default defineComponent({
 
     return {
       instance,
+      data: ref(props.data),
     };
   },
 });
 </script>
-<style scoped>
-div {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-</style>

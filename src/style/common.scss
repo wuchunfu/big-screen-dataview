@@ -1,7 +1,13 @@
-body {
-    font-family: fangsong;
+html {
+    /* 统一rem计算基数 */
+    font-size: 100px;
 }
 
+body {
+    /* 恢复正常字体大小 */
+    font-size: .16rem;
+    font-family: fangsong;
+}
 
 #colors-picker-dialog {
     z-index: 7;

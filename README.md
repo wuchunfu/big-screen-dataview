@@ -24,11 +24,39 @@ npm run dev
 npm run build
 ```
 
-## 通用组件
+## 一些说明
+
+### 图表组件封装
 
 为了方便使用，我们对依赖的库或别的依赖进行了二次封装：
 
 - [EChart](./src/common/echart/readme.md) | [Image2D](./src/common/image2d/readme.md) | [Image3D](./src/common/image3d/readme.md)
+
+### 统一弹框设计
+
+为了方便弹框的实现，我们进行了统一的设计（下面，我们以```alert```弹框为例来说明）。
+
+首先，你需要准备好弹框的模板，很简单，在```src/dialogs```下新建一个```.vue文件```即可。
+
+打卡```warning.vue```文件，可以看见，里面的内容是通过data来接收的，这个数据也就是调用这个弹框的时候传递的```initdata```这项。
+
+当然，新建完毕后，别忘了在```src/dialogs/lazy-load.ts```中进行懒加载注册。
+
+现在，已经可以试用这个弹框了，在这里，使用的例子就是：
+
+```js
+this.$store.commit('openDialog', {
+    id: "warning",
+    initdata: ['alert', "你刚刚进行的操作成功了", "温馨提示", "确定"],
+    callback: function () {
+       // 回调
+    }
+});
+```
+
+对于普通的弹框，到这里就可以了，不过，由于alert等比较特殊，经常使用到，由此，我们对一些常用的，进行了更简单的封装，下面列举一下：
+
+- alert(msg, title, funPos)
 
 开源协议
 ---------------------------------------
