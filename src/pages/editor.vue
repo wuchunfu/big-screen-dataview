@@ -41,12 +41,21 @@
         </div>
       </div>
       <div
+        class="config-btn"
+        title="点击我打卡或关闭全局配置界面"
+        @click="allConfigShow = !allConfigShow"
+      ></div>
+      <div
         class="config all"
         defType="dialogFrame"
         @mousedown="currentConfig = 'all'"
         :style="{ zIndex: currentConfig == 'all' ? 3 : 2 }"
+        v-show="allConfigShow"
       >
-        <h2 v-move>全局配置</h2>
+        <h2 v-move>
+          全局配置
+          <span @click="allConfigShow = false">X</span>
+        </h2>
         <ui-view-config
           v-model:background="dataView.background"
         ></ui-view-config>
@@ -56,8 +65,12 @@
         defType="dialogFrame"
         @mousedown="currentConfig = 'chart'"
         :style="{ zIndex: currentConfig == 'chart' ? 3 : 2 }"
+        v-show="currentIndex != -1"
       >
-        <h2 v-move>选中配置</h2>
+        <h2 v-move>
+          选中配置
+          <span @click="currentIndex = -1">X</span>
+        </h2>
         <ui-chart-config
           v-if="currentIndex != -1"
           :modelValue="dataView.chartlist[currentIndex].chart"
@@ -99,6 +112,7 @@ export default defineComponent({
       },
       borderLazy: ref(borderLazy),
       chartLazy: ref(chartLazy),
+      allConfigShow: ref(false),
     };
   },
   directives: {

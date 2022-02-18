@@ -8,6 +8,22 @@
         top: 0;
     }
 
+    .config-btn {
+        color: white;
+        position: fixed;
+        z-index: 4;
+        top: 0;
+        right: 0;
+        background-image: url('../image/setting.png');
+        width: 50px;
+        height: 30px;
+        background-size: 70% auto;
+        background-position: center;
+        background-repeat: no-repeat;
+        font-size: 0;
+        cursor: pointer;
+    }
+
     &>div {
         &>div {
             &.container {
@@ -83,6 +99,20 @@
                     user-select: none;
                     cursor: move;
                     background-image: url('../image/logo.png');
+
+                    &>span {
+                        float: right;
+                        width: 30px;
+                        text-align: center;
+                        font-family: monospace;
+                        cursor: pointer;
+                        font-weight: 200;
+
+                        &:hover {
+                            background-color: red;
+                            color: white;
+                        }
+                    }
                 }
             }
         }
