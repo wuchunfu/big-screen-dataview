@@ -17,6 +17,7 @@
             :key="index"
             @click="currentIndex = index"
             style="position: absolute"
+            :class="currentIndex == index ? 'active' : ''"
             :style="{
               left: item.left + '%',
               top: item.top + '%',
@@ -43,7 +44,7 @@
         class="config all"
         defType="dialogFrame"
         @mousedown="currentConfig = 'all'"
-        :style="{ zIndex: currentConfig == 'all' ? 2 : 1 }"
+        :style="{ zIndex: currentConfig == 'all' ? 3 : 2 }"
       >
         <h2 v-move>全局配置</h2>
         <ui-view-config
@@ -54,7 +55,7 @@
         class="config chart"
         defType="dialogFrame"
         @mousedown="currentConfig = 'chart'"
-        :style="{ zIndex: currentConfig == 'chart' ? 2 : 1 }"
+        :style="{ zIndex: currentConfig == 'chart' ? 3 : 2 }"
       >
         <h2 v-move>选中配置</h2>
         <ui-chart-config
