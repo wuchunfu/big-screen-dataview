@@ -1,5 +1,8 @@
 <template>
-  <component :is="instance" :data="data"></component>
+  <component
+    :is="instance"
+    :data="data"
+  ></component>
 </template>
 <script lang="ts">
 import { defineComponent, ref, watch } from "vue";

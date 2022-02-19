@@ -13,7 +13,8 @@ let dataView: DataView = {
             left: 0,
             top: 0,
             border: {
-                name: "none"
+                name: "none",
+                options: {}
             },
             chart: {
                 type: "define",
@@ -27,7 +28,8 @@ let dataView: DataView = {
             left: 0,
             top: 10,
             border: {
-                name: "uiBorderType1"
+                name: "uiBorderType1",
+                options: {}
             },
             chart: {
                 type: "echart",
@@ -35,11 +37,11 @@ let dataView: DataView = {
                     grid: {
                         left: 70
                     },
-                    xAxis: {
+                    yAxis: {
                         type: 'category',
                         data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
                     },
-                    yAxis: {
+                    xAxis: {
                         type: 'value'
                     },
                     series: [
@@ -57,7 +59,8 @@ let dataView: DataView = {
             left: 40,
             top: 10,
             border: {
-                name: "uiBorderType2"
+                name: "uiBorderType2",
+                options: {}
             },
             chart: {
                 type: "echart",
@@ -110,7 +113,8 @@ let dataView: DataView = {
             left: 60,
             top: 10,
             border: {
-                name: "uiBorderType1"
+                name: "uiBorderType1",
+                options: {}
             },
             chart: {
                 type: "echart",
@@ -156,7 +160,8 @@ let dataView: DataView = {
             left: 0,
             top: 56,
             border: {
-                name: "uiBorderType1"
+                name: "uiBorderType1",
+                options: {}
             },
             chart: {
                 type: "echart",
@@ -192,7 +197,8 @@ let dataView: DataView = {
             left: 33.3,
             top: 56,
             border: {
-                name: "uiBorderType1"
+                name: "uiBorderType1",
+                options: {}
             },
             chart: {
                 type: "echart",
@@ -222,7 +228,8 @@ let dataView: DataView = {
             left: 66.6,
             top: 56,
             border: {
-                name: "uiBorderType1"
+                name: "uiBorderType1",
+                options: {}
             },
             chart: {
                 type: "echart",

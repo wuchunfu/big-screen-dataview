@@ -1,5 +1,4 @@
 .editor-page {
-
     .fill-view {
         width: 100%;
         height: 100%;
@@ -7,12 +6,11 @@
         left: 0;
         top: 0;
     }
-
     .config-btn {
         color: white;
         position: fixed;
         z-index: 4;
-        top: 0;
+        top: 20px;
         right: 0;
         background-image: url('../image/setting.png');
         width: 50px;
@@ -23,14 +21,12 @@
         font-size: 0;
         cursor: pointer;
     }
-
     &>div {
         &>div {
             &.container {
                 position: relative;
                 overflow: hidden;
                 height: 100vh;
-
                 &>div {
                     position: relative;
                     z-index: 1;
@@ -38,7 +34,6 @@
                     width: 100%;
                     background-size: cover !important;
                     background-position: center center !important;
-
                     &>div {
                         &.active {
                             border: 1px dashed white;
@@ -46,7 +41,6 @@
                         }
                     }
                 }
-
                 &:after {
                     --lineStart: 4%;
                     --lineEnd: 96%;
@@ -60,14 +54,9 @@
                     height: 100%;
                     transform: rotate(45deg) scale(100);
                     background-size: .15px .15px;
-                    background-image:
-                        linear-gradient(0deg, var(--color) var(--lineStart), transparent var(--lineStart), transparent var(--lineEnd), var(--color) var(--lineEnd)),
-                        linear-gradient(-90deg, var(--color) var(--lineStart), transparent var(--lineStart), transparent var(--lineEnd), var(--color) var(--lineEnd)),
-                        linear-gradient(45deg, var(--color) var(--bgStart), transparent var(--bgStart), transparent var(--bgEnd), var(--color) var(--bgEnd)),
-                        linear-gradient(-45deg, var(--color) var(--bgStart), transparent var(--bgStart), transparent var(--bgEnd), var(--color) var(--bgEnd));
+                    background-image: linear-gradient(0deg, var(--color) var(--lineStart), transparent var(--lineStart), transparent var(--lineEnd), var(--color) var(--lineEnd)), linear-gradient(-90deg, var(--color) var(--lineStart), transparent var(--lineStart), transparent var(--lineEnd), var(--color) var(--lineEnd)), linear-gradient(45deg, var(--color) var(--bgStart), transparent var(--bgStart), transparent var(--bgEnd), var(--color) var(--bgEnd)), linear-gradient(-45deg, var(--color) var(--bgStart), transparent var(--bgStart), transparent var(--bgEnd), var(--color) var(--bgEnd));
                 }
             }
-
             &.config {
                 width: 300px;
                 overflow: auto;
@@ -79,15 +68,7 @@
                 min-height: 200px;
                 box-shadow: 0 0 13px 0 #607d8b;
                 border-radius: 5px;
-
-                &.all {
-                    left: 50px;
-                }
-
-                &.chart {
-                    right: 50px;
-                }
-
+                right: 50px;
                 &>h2 {
                     background-color: #b1c3c1;
                     background-size: auto 80%;
@@ -99,7 +80,6 @@
                     user-select: none;
                     cursor: move;
                     background-image: url('../image/logo.png');
-
                     &>span {
                         float: right;
                         width: 30px;
@@ -107,7 +87,6 @@
                         font-family: monospace;
                         cursor: pointer;
                         font-weight: 200;
-
                         &:hover {
                             background-color: red;
                             color: white;
