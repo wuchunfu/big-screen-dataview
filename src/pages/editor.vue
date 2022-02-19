@@ -37,6 +37,11 @@
               :options="item.chart.options"
               v-if="item.chart.type == 'echart'"
             ></echart>
+            <div class="fill-view" v-if="item.chart.type == 'define'">
+                <lazy-component
+                  :is="chartLazy[item.chart.name]"
+                ></lazy-component>
+              </div>
           </div>
         </div>
       </div>
@@ -81,47 +86,51 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, reactive, ref } from "vue";
-import DataView from "../types/DataView";
+    import {
+        defineComponent,
+        reactive,
+        ref
+    } from "vue";
+    import DataView from "../types/DataView";
 
-import vDrag from "../directives/v-drag";
+    import vDrag from "../directives/v-drag";
 
-import uiViewConfig from "../components/ui-view-config.vue";
-import uiChartConfig from "../components/ui-chart-config.vue";
+    import uiViewConfig from "../components/ui-view-config.vue";
+    import uiChartConfig from "../components/ui-chart-config.vue";
 
-import dataView_init from "../init/dataView";
+    import dataView_init from "../init/dataView";
 
-// 懒加载组件
-import lazyComponent from "../components/lazy-component.vue";
-import borderLazy from "../components/border/lazy-load";
-import chartLazy from "../components/chart/lazy-load";
+    // 懒加载组件
+    import lazyComponent from "../components/lazy-component.vue";
+    import borderLazy from "../components/border/lazy-load";
+    import chartLazy from "../components/chart/lazy-load";
 
-export default defineComponent({
-  setup() {
-    // 存储着大屏信息的对象
-    let dataView: DataView = reactive(dataView_init);
+    export default defineComponent({
+        setup() {
+            // 存储着大屏信息的对象
+            let dataView: DataView = reactive(dataView_init);
 
-    let currentIndex = ref(-1);
+            let currentIndex = ref(-1);
 
-    return {
-      dataView,
-      currentIndex,
-      currentConfig: ref("all"),
-      updateCurrentChart(val) {
-        dataView.chartlist[currentIndex.value].chart = val;
-      },
-      borderLazy: ref(borderLazy),
-      chartLazy: ref(chartLazy),
-      allConfigShow: ref(false),
-    };
-  },
-  directives: {
-    drag: vDrag,
-  },
-  components: {
-    uiViewConfig,
-    uiChartConfig,
-    lazyComponent,
-  },
-});
+            return {
+                dataView,
+                currentIndex,
+                currentConfig: ref("all"),
+                updateCurrentChart(val) {
+                    dataView.chartlist[currentIndex.value].chart = val;
+                },
+                borderLazy: ref(borderLazy),
+                chartLazy: ref(chartLazy),
+                allConfigShow: ref(false),
+            };
+        },
+        directives: {
+            drag: vDrag,
+        },
+        components: {
+            uiViewConfig,
+            uiChartConfig,
+            lazyComponent,
+        },
+    });
 </script>

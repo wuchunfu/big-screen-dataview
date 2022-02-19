@@ -9,19 +9,21 @@ let dataView: DataView = {
     chartlist: [
         {
             width: 100,
-            height: 10,
+            height: 8,
             left: 0,
             top: 0,
             border: {
                 name: "none"
             },
             chart: {
-                type: ""
+                type: "define",
+                name: "uiChartType1",
+                options: {}
             }
         },
         {
             width: 40,
-            height: 45,
+            height: 46,
             left: 0,
             top: 10,
             border: {
@@ -51,7 +53,7 @@ let dataView: DataView = {
         },
         {
             width: 20,
-            height: 45,
+            height: 46,
             left: 40,
             top: 10,
             border: {
@@ -104,7 +106,7 @@ let dataView: DataView = {
         },
         {
             width: 40,
-            height: 45,
+            height: 46,
             left: 60,
             top: 10,
             border: {
@@ -152,7 +154,7 @@ let dataView: DataView = {
             width: 33.3,
             height: 45,
             left: 0,
-            top: 55,
+            top: 56,
             border: {
                 name: "uiBorderType1"
             },
@@ -188,7 +190,7 @@ let dataView: DataView = {
             width: 33.3,
             height: 45,
             left: 33.3,
-            top: 55,
+            top: 56,
             border: {
                 name: "uiBorderType1"
             },
@@ -218,7 +220,7 @@ let dataView: DataView = {
             width: 33.3,
             height: 45,
             left: 66.6,
-            top: 55,
+            top: 56,
             border: {
                 name: "uiBorderType1"
             },
