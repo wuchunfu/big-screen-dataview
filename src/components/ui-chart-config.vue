@@ -3,6 +3,10 @@
 
     <nav>
       <span
+        @click="flag='basic'"
+        :active='flag=="basic"?"yes":"no"'
+      >基本</span>
+      <span
         @click="flag='border'"
         :active='flag=="border"?"yes":"no"'
       >边框</span>
@@ -11,6 +15,11 @@
         :active='flag=="chart"?"yes":"no"'
       >图表</span>
     </nav>
+
+    <div v-show='flag=="basic"'>
+      <div ref="uiBasicConfig"></div>
+      <button @click="doUpdateBasic">更新</button>
+    </div>
 
     <div v-show='flag=="border"'>
       <div ref="uiBorderConfig"></div>
@@ -58,11 +67,13 @@ export default defineComponent({
   props: {
     chart: Chart,
     border: {},
+    basic: {},
   },
   setup(props, context) {
     let uiChartConfig = ref(null);
     let uiBorderConfig = ref(null);
-    let oweChart, oweBorder;
+    let uiBasicConfig = ref(null);
+    let oweChart, oweBorder, oweBasic;
 
     onMounted(() => {
       oweChart = new OpenWebEditor({
@@ -85,6 +96,16 @@ export default defineComponent({
         ...oweConfig,
       });
 
+      oweBasic = new OpenWebEditor({
+        // 编辑器挂载点(必选)
+        el: uiBasicConfig.value,
+
+        // 初始化文本（可选）
+        content: JSON.stringify(props.basic, null, 2),
+
+        ...oweConfig,
+      });
+
       watch(
         () => props.chart,
         (chart) => {
@@ -98,16 +119,27 @@ export default defineComponent({
           oweBorder.valueOf(JSON.stringify(border, null, 2));
         }
       );
+
+      watch(
+        () => props.basic,
+        (basic) => {
+          oweBasic.valueOf(JSON.stringify(basic, null, 2));
+        }
+      );
     });
 
     return {
       uiBorderConfig,
       uiChartConfig,
+      uiBasicConfig,
       doUpdateBorder() {
         context.emit("update:border", JSON.parse(oweBorder.valueOf()));
       },
       doUpdateChart() {
         context.emit("update:chart", JSON.parse(oweChart.valueOf()));
+      },
+      doUpdateBasic() {
+        context.emit("update:basic", JSON.parse(oweBasic.valueOf()));
       },
       flag: ref("chart"),
     };
@@ -129,7 +161,7 @@ export default defineComponent({
   }
   & > div {
     & > div {
-      height: 400px;
+      max-height: 400px;
     }
     & > button {
       display: block;

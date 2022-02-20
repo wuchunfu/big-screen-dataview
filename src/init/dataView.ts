@@ -8,10 +8,12 @@ let dataView: DataView = {
     },
     chartlist: [
         {
-            width: 100,
-            height: 8,
-            left: 0,
-            top: 0,
+            basic: {
+                width: 100,
+                height: 8,
+                left: 0,
+                top: 0,
+            },
             border: {
                 name: "none",
                 options: {}
@@ -23,10 +25,12 @@ let dataView: DataView = {
             }
         },
         {
-            width: 40,
-            height: 46,
-            left: 0,
-            top: 10,
+            basic: {
+                width: 40,
+                height: 46,
+                left: 0,
+                top: 10,
+            },
             border: {
                 name: "uiBorderType1",
                 options: {}
@@ -54,10 +58,12 @@ let dataView: DataView = {
             }
         },
         {
-            width: 20,
-            height: 46,
-            left: 40,
-            top: 10,
+            basic: {
+                width: 20,
+                height: 46,
+                left: 40,
+                top: 10,
+            },
             border: {
                 name: "uiBorderType2",
                 options: {}
@@ -108,10 +114,12 @@ let dataView: DataView = {
             }
         },
         {
-            width: 40,
-            height: 46,
-            left: 60,
-            top: 10,
+            basic: {
+                width: 40,
+                height: 46,
+                left: 60,
+                top: 10,
+            },
             border: {
                 name: "uiBorderType1",
                 options: {}
@@ -155,10 +163,12 @@ let dataView: DataView = {
             }
         },
         {
-            width: 33.3,
-            height: 45,
-            left: 0,
-            top: 56,
+            basic: {
+                width: 33.3,
+                height: 45,
+                left: 0,
+                top: 56,
+            },
             border: {
                 name: "uiBorderType1",
                 options: {}
@@ -192,10 +202,12 @@ let dataView: DataView = {
             }
         },
         {
-            width: 33.3,
-            height: 45,
-            left: 33.3,
-            top: 56,
+            basic: {
+                width: 33.3,
+                height: 45,
+                left: 33.3,
+                top: 56,
+            },
             border: {
                 name: "uiBorderType1",
                 options: {}
@@ -223,10 +235,12 @@ let dataView: DataView = {
             }
         },
         {
-            width: 33.3,
-            height: 45,
-            left: 66.6,
-            top: 56,
+            basic: {
+                width: 33.3,
+                height: 45,
+                left: 66.6,
+                top: 56,
+            },
             border: {
                 name: "uiBorderType1",
                 options: {}

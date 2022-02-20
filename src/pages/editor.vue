@@ -17,10 +17,10 @@
             style="position: absolute"
             :class="currentIndex == index ? 'active' : ''"
             :style="{
-              left: item.left + '%',
-              top: item.top + '%',
-              width: item.width + '%',
-              height: item.height + '%',
+              left: item.basic.left + '%',
+              top: item.basic.top + '%',
+              width: item.basic.width + '%',
+              height: item.basic.height + '%',
             }"
           >
             <!-- 边框 -->
@@ -45,7 +45,12 @@
         </div>
       </div>
       <div
-        class="config-btn"
+        class='add-btn fixed-btn'
+        title='点击我新增小图形'
+        @click="addNewChart"
+      ></div>
+      <div
+        class="config-btn fixed-btn"
         title="点击我打卡或关闭全局配置界面"
         @click="allConfigShow = !allConfigShow"
       ></div>
@@ -79,6 +84,8 @@
           @update:chart="updateCurrentChart"
           :border="dataView.chartlist[currentIndex].border"
           @update:border="updateCurrentBorder"
+          :basic="dataView.chartlist[currentIndex].basic"
+          @update:basic="updateCurrentBasic"
         ></ui-chart-config>
       </div>
     </div>
@@ -117,9 +124,31 @@ export default defineComponent({
       updateCurrentBorder(val) {
         dataView.chartlist[currentIndex.value].border = val;
       },
+      updateCurrentBasic(val) {
+        dataView.chartlist[currentIndex.value].basic = val;
+      },
       borderLazy: ref(borderLazy),
       chartLazy: ref(chartLazy),
       allConfigShow: ref(false),
+      addNewChart() {
+        dataView.chartlist.push({
+          basic: {
+            width: 30,
+            height: 30,
+            left: 0,
+            top: 0,
+          },
+          border: {
+            name: "uiBorderType1",
+            options: {},
+          },
+          chart: {
+            type: "none",
+            name: "",
+            options: {},
+          },
+        });
+      },
     };
   },
   directives: {

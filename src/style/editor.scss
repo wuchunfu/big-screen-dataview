@@ -6,20 +6,26 @@
         left: 0;
         top: 0;
     }
-    .config-btn {
-        color: white;
+    .fixed-btn {
         position: fixed;
         z-index: 4;
         top: 20px;
-        right: 0;
-        background-image: url('../image/setting.png');
-        width: 50px;
         height: 30px;
-        background-size: 70% auto;
+        background-size: auto 70%;
         background-position: center;
         background-repeat: no-repeat;
         font-size: 0;
         cursor: pointer;
+        &.add-btn {
+            right: 10px;
+            width: 30px;
+            background-image: url('../image/add.png');
+        }
+        &.config-btn {
+            right: 40px;
+            width: 50px;
+            background-image: url('../image/setting.png');
+        }
     }
     &>div {
         &>div {
