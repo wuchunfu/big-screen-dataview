@@ -90,7 +90,7 @@
       >
         <h2 v-move>
           选中配置
-          <span @click="currentIndex = -1">X</span>
+          <span @click="currentConfigShow = false">X</span>
         </h2>
         <ui-chart-config
           v-if="currentIndex != -1"
