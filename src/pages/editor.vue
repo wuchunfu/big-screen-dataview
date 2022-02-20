@@ -12,10 +12,10 @@
           <div
             v-drag
             v-for="(item, index) in dataView.chartlist"
-            :key="index"
-            @click="currentIndex = index"
+            :key="item"
             style="position: absolute"
             :class="currentIndex == index ? 'active' : ''"
+            @click='currentIndex = index'
             :style="{
               left: item.basic.left + '%',
               top: item.basic.top + '%',
@@ -23,6 +23,20 @@
               height: item.basic.height + '%',
             }"
           >
+            <!-- 按钮 -->
+            <div
+              class="btn-list"
+              v-show='currentIndex==index'
+            >
+              <span
+                class='config'
+                @click="currentConfigShow=!currentConfigShow"
+              >配置</span>
+              <span
+                class='delete'
+                @click="deleteItem(index)"
+              >删除</span>
+            </div>
             <!-- 边框 -->
             <div class="fill-view">
               <lazy-component
@@ -72,7 +86,7 @@
         defType="dialogFrame"
         @mousedown="currentConfig = 'chart'"
         :style="{ zIndex: currentConfig == 'chart' ? 3 : 2 }"
-        v-show="currentIndex != -1"
+        v-show="currentConfigShow && currentIndex != -1"
       >
         <h2 v-move>
           选中配置
@@ -113,10 +127,16 @@ export default defineComponent({
     let dataView: DataView = reactive(dataView_init);
 
     let currentIndex = ref(-1);
+    let currentConfigShow = ref(false);
 
     return {
+      deleteItem(index) {
+        dataView.chartlist.splice(index, 1);
+        currentIndex.value = -1;
+      },
       dataView,
       currentIndex,
+      currentConfigShow,
       currentConfig: ref("all"),
       updateCurrentChart(val) {
         dataView.chartlist[currentIndex.value].chart = val;

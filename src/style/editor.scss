@@ -6,6 +6,31 @@
         left: 0;
         top: 0;
     }
+    .btn-list {
+        position: absolute;
+        z-index: 3;
+        background-color: white;
+        padding: 2px;
+        border-radius: 5px;
+        &>span {
+            font-size: 0;
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-size: 80% auto;
+            background-position: center center;
+            background-repeat: no-repeat;
+            border-radius: 50%;
+            vertical-align: top;
+            cursor: pointer;
+            &.config {
+                background-image: url('../image/config.png');
+            }
+            &.delete {
+                background-image: url('../image/delete.png');
+            }
+        }
+    }
     .fixed-btn {
         position: fixed;
         z-index: 4;
