@@ -1,21 +1,32 @@
 <template>
-  <div class="editor-page">
+  <div
+    class="editor-page"
+    @mousemove="
+      mousemoveMoveChart($event);
+      mousemoveResizeChart($event);
+    "
+    @mouseup="
+      mouseupMoveChart($event);
+      mouseupResizeChart($event);
+    "
+  >
     <div>
       <div class="container">
-        <div :style="{
+        <div
+          :style="{
             background:
               dataView.background.type == 'color'
                 ? dataView.background.color
                 : 'url(' + dataView.background.image + ')',
-          }">
+          }"
+        >
           <!-- 一个个小图表 -->
           <div
-            v-drag
             v-for="(item, index) in dataView.chartlist"
             :key="item"
             style="position: absolute"
             :class="currentIndex == index ? 'active' : ''"
-            @click='currentIndex = index'
+            @mousedown="mousedownMoveChart($event, index)"
             :style="{
               left: item.basic.left + '%',
               top: item.basic.top + '%',
@@ -23,44 +34,42 @@
               height: item.basic.height + '%',
             }"
           >
-            <!-- 按钮 -->
+            <!-- 缩放 -->
             <div
-              class="btn-list"
-              v-show='currentIndex==index'
-            >
+              class="resize"
+              @mousedown.stop="mousedownResizeChart($event)"
+            ></div>
+            <!-- 按钮 -->
+            <div class="btn-list" v-show="currentIndex == index">
               <span
-                class='config'
-                @click="currentConfigShow=!currentConfigShow"
-              >配置</span>
-              <span
-                class='delete'
-                @click="deleteItem(index)"
-              >删除</span>
+                class="config"
+                @click="currentConfigShow = !currentConfigShow"
+                >配置</span
+              >
+              <span class="delete" @click="deleteItem(index)">删除</span>
             </div>
             <!-- 边框 -->
             <div class="fill-view">
               <lazy-component
                 v-if="item.border.name != 'none'"
                 :is="borderLazy[item.border.name]"
-              ></lazy-component>
+              >
+              </lazy-component>
             </div>
             <!-- 图表 -->
             <echart
               :options="item.chart.options"
               v-if="item.chart.type == 'echart'"
             ></echart>
-            <div
-              class="fill-view"
-              v-if="item.chart.type == 'define'"
-            >
+            <div class="fill-view" v-if="item.chart.type == 'define'">
               <lazy-component :is="chartLazy[item.chart.name]"></lazy-component>
             </div>
           </div>
         </div>
       </div>
       <div
-        class='add-btn fixed-btn'
-        title='点击我新增小图形'
+        class="add-btn fixed-btn"
+        title="点击我新增小图形"
         @click="addNewChart"
       ></div>
       <div
@@ -79,7 +88,9 @@
           全局配置
           <span @click="allConfigShow = false">X</span>
         </h2>
-        <ui-view-config v-model:background="dataView.background"></ui-view-config>
+        <ui-view-config
+          v-model:background="dataView.background"
+        ></ui-view-config>
       </div>
       <div
         class="config chart"
@@ -94,11 +105,20 @@
         </h2>
         <ui-chart-config
           v-if="currentIndex != -1"
-          :chart="dataView.chartlist[currentIndex].chart"
+          :chart="
+            dataView.chartlist[currentIndex] &&
+            dataView.chartlist[currentIndex].chart
+          "
           @update:chart="updateCurrentChart"
-          :border="dataView.chartlist[currentIndex].border"
+          :border="
+            dataView.chartlist[currentIndex] &&
+            dataView.chartlist[currentIndex].border
+          "
           @update:border="updateCurrentBorder"
-          :basic="dataView.chartlist[currentIndex].basic"
+          :basic="
+            dataView.chartlist[currentIndex] &&
+            dataView.chartlist[currentIndex].basic
+          "
           @update:basic="updateCurrentBasic"
         ></ui-chart-config>
       </div>
@@ -108,8 +128,6 @@
 <script lang="ts">
 import { defineComponent, reactive, ref } from "vue";
 import DataView from "../types/DataView";
-
-import vDrag from "../directives/v-drag";
 
 import uiViewConfig from "../components/ui-view-config.vue";
 import uiChartConfig from "../components/ui-chart-config.vue";
@@ -126,18 +144,54 @@ export default defineComponent({
     // 存储着大屏信息的对象
     let dataView: DataView = reactive(dataView_init);
 
+    // 当前点击选中
     let currentIndex = ref(-1);
     let currentConfigShow = ref(false);
 
+    // 纪录移动需要的信息
+    let currentMoveChartPosition = null;
+    let preBasicPosition = null;
+
+    // 移动处理
+    let doMoveChart = function (x, y) {
+      let w =
+        ((x - currentMoveChartPosition[0]) / document.body.clientWidth) * 100;
+      let h =
+        ((y - currentMoveChartPosition[1]) / document.body.clientHeight) * 100;
+      dataView.chartlist[currentIndex.value].basic.left =
+        preBasicPosition[0] + w;
+      dataView.chartlist[currentIndex.value].basic.top =
+        preBasicPosition[1] + h;
+    };
+
+    // 纪录缩放需要的信息
+    let currentResizeChartSize = null;
+    let preBasicSize = null;
+
+    // 缩放处理
+    let doResizeChart = function (x, y) {
+      let w =
+        ((x - currentResizeChartSize[0]) / document.body.clientWidth) * 100;
+      let h =
+        ((y - currentResizeChartSize[1]) / document.body.clientHeight) * 100;
+      dataView.chartlist[currentIndex.value].basic.width = preBasicSize[0] + w;
+      dataView.chartlist[currentIndex.value].basic.height = preBasicSize[1] + h;
+    };
+
     return {
+      // 删除图表
       deleteItem(index) {
         dataView.chartlist.splice(index, 1);
         currentIndex.value = -1;
       },
+
+      // 大屏信息和当前选中
       dataView,
       currentIndex,
       currentConfigShow,
       currentConfig: ref("all"),
+
+      // 更新图表、边框、基本配置等方法
       updateCurrentChart(val) {
         dataView.chartlist[currentIndex.value].chart = val;
       },
@@ -147,9 +201,15 @@ export default defineComponent({
       updateCurrentBasic(val) {
         dataView.chartlist[currentIndex.value].basic = val;
       },
+
+      // 边框和图表的懒加载组件
       borderLazy: ref(borderLazy),
       chartLazy: ref(chartLazy),
+
+      //   全局（基础）配置界面是否显示
       allConfigShow: ref(false),
+
+      // 添加新的图表
       addNewChart() {
         dataView.chartlist.push({
           basic: {
@@ -169,10 +229,38 @@ export default defineComponent({
           },
         });
       },
+
+      // 控制图表移动
+      mousedownMoveChart(event, index) {
+        currentIndex.value = index;
+        currentMoveChartPosition = [event.x, event.y];
+        preBasicPosition = [
+          dataView.chartlist[currentIndex.value].basic.left,
+          dataView.chartlist[currentIndex.value].basic.top,
+        ];
+      },
+      mousemoveMoveChart(event) {
+        if (currentMoveChartPosition != null) doMoveChart(event.x, event.y);
+      },
+      mouseupMoveChart(event) {
+        currentMoveChartPosition = null;
+      },
+
+      // 控制图表缩放
+      mousedownResizeChart(event) {
+        currentResizeChartSize = [event.x, event.y];
+        preBasicSize = [
+          dataView.chartlist[currentIndex.value].basic.width,
+          dataView.chartlist[currentIndex.value].basic.height,
+        ];
+      },
+      mousemoveResizeChart(event) {
+        if (currentResizeChartSize != null) doResizeChart(event.x, event.y);
+      },
+      mouseupResizeChart(event) {
+        currentResizeChartSize = null;
+      },
     };
-  },
-  directives: {
-    drag: vDrag,
   },
   components: {
     uiViewConfig,

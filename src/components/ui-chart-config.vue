@@ -36,7 +36,6 @@
 <script lang="ts">
 import { defineComponent, ref, watch, onMounted } from "vue";
 const OpenWebEditor = require("open-web-editor");
-import { Chart } from "../types/ChartItem";
 
 let oweConfig = {
   // 设置颜色（可选）
@@ -65,7 +64,7 @@ let oweConfig = {
 
 export default defineComponent({
   props: {
-    chart: Chart,
+    chart: {},
     border: {},
     basic: {},
   },
