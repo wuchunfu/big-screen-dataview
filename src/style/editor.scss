@@ -77,8 +77,8 @@
 
                     &>div {
                         &.active {
-                            border: 1px dashed white;
-                            background-color: #ffffff2e;
+                            background-color: #ffffff55;
+                            z-index: 1;
 
                             &>.resize {
                                 display: inline-block;

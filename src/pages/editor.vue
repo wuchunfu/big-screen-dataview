@@ -6,8 +6,8 @@
       mousemoveResizeChart($event);
     "
     @mouseup="
-      mouseupMoveChart($event);
-      mouseupResizeChart($event);
+      mouseupMoveChart();
+      mouseupResizeChart();
     "
   >
     <div>
@@ -27,6 +27,7 @@
             style="position: absolute"
             :class="currentIndex == index ? 'active' : ''"
             @mousedown="mousedownMoveChart($event, index)"
+            @dblclick="currentIndex = -1"
             :style="{
               left: item.basic.left + '%',
               top: item.basic.top + '%',
@@ -242,7 +243,7 @@ export default defineComponent({
       mousemoveMoveChart(event) {
         if (currentMoveChartPosition != null) doMoveChart(event.x, event.y);
       },
-      mouseupMoveChart(event) {
+      mouseupMoveChart() {
         currentMoveChartPosition = null;
       },
 
@@ -257,7 +258,7 @@ export default defineComponent({
       mousemoveResizeChart(event) {
         if (currentResizeChartSize != null) doResizeChart(event.x, event.y);
       },
-      mouseupResizeChart(event) {
+      mouseupResizeChart() {
         currentResizeChartSize = null;
       },
     };
