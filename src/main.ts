@@ -13,6 +13,7 @@ import commonInstall from './common/install'
 import remoteInstall from './hooks/$remote'
 
 import alertInstall from './hooks/$alert'
+import confirmInstall from './hooks/$confirm'
 
 import store from './store/index'
 
@@ -25,6 +26,7 @@ let app = createApp(App)
 app.use(remoteInstall)
     .use(commonInstall)
     .use(alertInstall)
+    .use(confirmInstall)
     .use(route)
     .use(store)
     .directive('move', vMove)

@@ -30,17 +30,19 @@ export default {
 </script>
 <style lang="scss" scoped>
 .warning {
-  width: 4.2rem;
+  width: 300px;
   margin: auto;
   margin-top: 15%;
   text-align: center;
 
   & > h2 {
-    background-color: #f5484a;
+    background-color: #1c65a9;
     line-height: 0.5rem;
     padding-left: 0.2rem;
     color: white;
     font-size: 0.2rem;
+    user-select: none;
+    cursor: move;
   }
 
   & > div {
@@ -51,9 +53,9 @@ export default {
       padding: 0.15rem;
 
       &.content {
-        color: #777;
-        font-size: 0.12rem;
-        min-height: 2rem;
+        color: rgb(0, 0, 0);
+        font-size: 14px;
+        min-height: 1rem;
         overflow: auto;
       }
 
@@ -69,14 +71,14 @@ export default {
           color: #fff;
           border: 0;
           cursor: pointer;
-          margin-left: 0.1rem;
 
           &.no {
-            background: #484949;
+            background: #cbcfcf;
+            margin-left: 50px;
           }
 
           &.yes {
-            background: #f5484a;
+            background: #1c65a9;
           }
         }
       }

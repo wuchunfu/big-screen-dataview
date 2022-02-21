@@ -3,10 +3,10 @@
     <nav>
       <span @click="flag = 'basic'" :active="flag == 'basic' ? 'yes' : 'no'"
         >基本</span
-      >
+      >|
       <span @click="flag = 'border'" :active="flag == 'border' ? 'yes' : 'no'"
         >边框</span
-      >
+      >|
       <span @click="flag = 'chart'" :active="flag == 'chart' ? 'yes' : 'no'"
         >图表</span
       >
@@ -144,10 +144,12 @@ export default defineComponent({
 .ui-chart-config {
   & > nav {
     text-align: center;
-    margin: 5px 0;
+    margin: 7px 0;
+    user-select: none;
     & > span {
-      padding: 0 30px;
+      padding: 6px 10px;
       cursor: pointer;
+      font-weight: 800;
       &[active="yes"] {
         border-bottom: 2px solid red;
       }
