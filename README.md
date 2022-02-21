@@ -59,6 +59,7 @@ this.$store.commit('openDialog', {
 对于普通的弹框，到这里就可以了，不过，由于alert等比较特殊，经常使用到，由此，我们对一些常用的，进行了更简单的封装，下面列举一下：
 
 - this.$alert(msg, title, funPos) ：一些小提示
+- this.$confirm(title, msg, actionPos, actionNeg, mesPos, mesNeg)：确认提示
 
 开源协议
 ---------------------------------------

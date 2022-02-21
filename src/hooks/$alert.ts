@@ -12,7 +12,7 @@ $alert.install = function (Vue: DefineComponent) {
 
                 this.$store.commit('openDialog', {
                     id: "warning",
-                    initdata: ['$alert', msg, title || "温馨提示", "确定"],
+                    initdata: ['alert', msg, title || "温馨提示", "确定"],
                     callback: function () {
                         if (typeof funPos == 'function') funPos();
                     }

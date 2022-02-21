@@ -27,7 +27,6 @@
             style="position: absolute"
             :class="currentIndex == index ? 'active' : ''"
             @mousedown="mousedownMoveChart($event, index)"
-            @dblclick="currentIndex = -1"
             :style="{
               left: item.basic.left + '%',
               top: item.basic.top + '%',
@@ -44,10 +43,13 @@
             <div class="btn-list" v-show="currentIndex == index">
               <span
                 class="config"
-                @click="currentConfigShow = !currentConfigShow"
+                @click.stop="currentConfigShow = !currentConfigShow"
                 >配置</span
               >
-              <span class="delete" @click="deleteItem(index)">删除</span>
+              <span class="delete" @click.stop="deleteItem(index)">删除</span>
+              <span class="close" @mousedown.stop="currentIndex = -1"
+                >关闭</span
+              >
             </div>
             <!-- 边框 -->
             <div class="fill-view">
@@ -195,8 +197,9 @@ export default defineComponent({
     return {
       // 删除图表
       deleteItem(index) {
-        dataView.chartlist.splice(index, 1);
-        currentIndex.value = -1;
+        this.$confirm("温馨提示", "是否确定删除当前选中图表?", () => {
+          dataView.chartlist.splice(index, 1);
+        });
       },
 
       // 大屏信息和当前选中
