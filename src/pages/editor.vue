@@ -54,6 +54,7 @@
               <lazy-component
                 v-if="item.border.name != 'none'"
                 :is="borderLazy[item.border.name]"
+                :data="item.border.options"
               >
               </lazy-component>
             </div>
@@ -63,7 +64,10 @@
               v-if="item.chart.type == 'echart'"
             ></echart>
             <div class="fill-view" v-if="item.chart.type == 'define'">
-              <lazy-component :is="chartLazy[item.chart.name]"></lazy-component>
+              <lazy-component
+                :is="chartLazy[item.chart.name]"
+                :data="item.chart.options"
+              ></lazy-component>
             </div>
           </div>
         </div>
@@ -179,6 +183,15 @@ export default defineComponent({
       dataView.chartlist[currentIndex.value].basic.height = preBasicSize[1] + h;
     };
 
+    // 同步basic
+    let updateBasic = function () {
+      let index = currentIndex.value;
+      currentIndex.value = -1;
+      setTimeout(() => {
+        currentIndex.value = index;
+      });
+    };
+
     return {
       // 删除图表
       deleteItem(index) {
@@ -244,6 +257,7 @@ export default defineComponent({
         if (currentMoveChartPosition != null) doMoveChart(event.x, event.y);
       },
       mouseupMoveChart() {
+        if (currentMoveChartPosition != null) updateBasic();
         currentMoveChartPosition = null;
       },
 
@@ -259,6 +273,7 @@ export default defineComponent({
         if (currentResizeChartSize != null) doResizeChart(event.x, event.y);
       },
       mouseupResizeChart() {
+        if (currentResizeChartSize != null) updateBasic();
         currentResizeChartSize = null;
       },
     };

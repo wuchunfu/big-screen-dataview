@@ -21,7 +21,9 @@ let dataView: DataView = {
             chart: {
                 type: "define",
                 name: "uiChartType1",
-                options: {}
+                options: {
+                    title: "· 可视化大屏探索和实践 ·"
+                }
             }
         },
         {
@@ -33,7 +35,9 @@ let dataView: DataView = {
             },
             border: {
                 name: "uiBorderType1",
-                options: {}
+                options: {
+                    title: "一周收入纪录"
+                }
             },
             chart: {
                 type: "echart",
@@ -66,7 +70,9 @@ let dataView: DataView = {
             },
             border: {
                 name: "uiBorderType2",
-                options: {}
+                options: {
+                    title: "一周消费记录"
+                }
             },
             chart: {
                 type: "echart",
@@ -122,7 +128,9 @@ let dataView: DataView = {
             },
             border: {
                 name: "uiBorderType1",
-                options: {}
+                options: {
+                    title: "消费类型分布情况"
+                }
             },
             chart: {
                 type: "echart",
@@ -171,7 +179,9 @@ let dataView: DataView = {
             },
             border: {
                 name: "uiBorderType1",
-                options: {}
+                options: {
+                    title: "不同商品的比例"
+                }
             },
             chart: {
                 type: "echart",
@@ -210,7 +220,9 @@ let dataView: DataView = {
             },
             border: {
                 name: "uiBorderType1",
-                options: {}
+                options: {
+                    title: "组之间的类比"
+                }
             },
             chart: {
                 type: "echart",
@@ -243,7 +255,9 @@ let dataView: DataView = {
             },
             border: {
                 name: "uiBorderType1",
-                options: {}
+                options: {
+                    title: "指数变化拟合"
+                }
             },
             chart: {
                 type: "echart",

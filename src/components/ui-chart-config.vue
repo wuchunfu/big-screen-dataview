@@ -1,36 +1,31 @@
 <template>
   <div class="ui-chart-config">
-
     <nav>
-      <span
-        @click="flag='basic'"
-        :active='flag=="basic"?"yes":"no"'
-      >基本</span>
-      <span
-        @click="flag='border'"
-        :active='flag=="border"?"yes":"no"'
-      >边框</span>
-      <span
-        @click="flag='chart'"
-        :active='flag=="chart"?"yes":"no"'
-      >图表</span>
+      <span @click="flag = 'basic'" :active="flag == 'basic' ? 'yes' : 'no'"
+        >基本</span
+      >
+      <span @click="flag = 'border'" :active="flag == 'border' ? 'yes' : 'no'"
+        >边框</span
+      >
+      <span @click="flag = 'chart'" :active="flag == 'chart' ? 'yes' : 'no'"
+        >图表</span
+      >
     </nav>
 
-    <div v-show='flag=="basic"'>
+    <div v-show="flag == 'basic'">
       <div ref="uiBasicConfig"></div>
       <button @click="doUpdateBasic">更新</button>
     </div>
 
-    <div v-show='flag=="border"'>
+    <div v-show="flag == 'border'">
       <div ref="uiBorderConfig"></div>
       <button @click="doUpdateBorder">更新</button>
     </div>
 
-    <div v-show='flag=="chart"'>
+    <div v-show="flag == 'chart'">
       <div ref="uiChartConfig"></div>
       <button @click="doUpdateChart">更新</button>
     </div>
-
   </div>
 </template>
 <script lang="ts">
@@ -140,7 +135,7 @@ export default defineComponent({
       doUpdateBasic() {
         context.emit("update:basic", JSON.parse(oweBasic.valueOf()));
       },
-      flag: ref("chart"),
+      flag: ref("basic"),
     };
   },
 });

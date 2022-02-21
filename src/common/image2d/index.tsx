@@ -10,17 +10,19 @@ export default defineComponent({
             default: () => () => { }
         }
     },
-    setup(props) {
+    setup(props, { expose }) {
 
         const elRef = ref<HTMLElement>()
         const canvasRef = ref<HTMLElement>()
+
+        let doUpdate
 
         // 创建图表对象
         onMounted(() => {
 
             let _canvas = image2D(canvasRef.value)
 
-            let doUpdate = () => {
+            doUpdate = () => {
                 let size = xhtml.size(elRef.value)
                 _canvas.css({
                     width: size.width + "px",
@@ -44,6 +46,13 @@ export default defineComponent({
 
             // 取消监听
             stopResize()
+        })
+
+        // 对外暴露接口
+        expose({
+            doUpdate() {
+                doUpdate()
+            }
         })
 
         return () => {
