@@ -61,6 +61,12 @@ this.$store.commit('openDialog', {
 - this.$alert(msg, title, funPos) ：一些小提示
 - this.$confirm(title, msg, actionPos, actionNeg, mesPos, mesNeg)：确认提示
 
+### 新增"边框"和"图表"
+
+首先，你需要在```src/components/```下的```border```和```chart```下方便新增需要的组件，然后在对应的```lazy-load.ts```中进行引入。
+
+此时，页面中已经可以使用这些组件了，只不过，为了在```选中配置```界面可选，还需要在```config/```下的```border```和```chart```文件夹中进行登记。
+
 开源协议
 ---------------------------------------
 [MIT](https://github.com/hai2007/big-screen-dataview/blob/master/LICENSE)

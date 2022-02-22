@@ -18,12 +18,50 @@
     </div>
 
     <div v-show="flag == 'border'">
-      <div ref="uiBorderConfig"></div>
+      <div>
+        <div v-show="borderFlag == 'design'">{{ borderVal }}</div>
+        <div v-show="borderFlag == 'source'" ref="uiBorderConfig"></div>
+
+        <span>
+          <button
+            @click="borderFlag = 'design'"
+            :active="borderFlag == 'design' ? 'yes' : 'no'"
+          >
+            Design
+          </button>
+
+          <button
+            @click="borderFlag = 'source'"
+            :active="borderFlag == 'source' ? 'yes' : 'no'"
+          >
+            Source
+          </button>
+        </span>
+      </div>
       <button @click="doUpdateBorder">更新</button>
     </div>
 
     <div v-show="flag == 'chart'">
-      <div ref="uiChartConfig"></div>
+      <div>
+        <div v-show="chartFlag == 'design'">{{ chartVal }}</div>
+        <div v-show="chartFlag == 'source'" ref="uiChartConfig"></div>
+
+        <span>
+          <button
+            @click="chartFlag = 'design'"
+            :active="chartFlag == 'design' ? 'yes' : 'no'"
+          >
+            Design
+          </button>
+
+          <button
+            @click="chartFlag = 'source'"
+            :active="chartFlag == 'source' ? 'yes' : 'no'"
+          >
+            Source
+          </button>
+        </span>
+      </div>
       <button @click="doUpdateChart">更新</button>
     </div>
   </div>
@@ -69,6 +107,9 @@ export default defineComponent({
     let uiBasicConfig = ref(null);
     let oweChart, oweBorder, oweBasic;
 
+    let borderVal = ref(props.border);
+    let chartVal = ref(props.chart);
+
     onMounted(() => {
       oweChart = new OpenWebEditor({
         // 编辑器挂载点(必选)
@@ -100,42 +141,66 @@ export default defineComponent({
         ...oweConfig,
       });
 
-      watch(
-        () => props.chart,
-        (chart) => {
-          oweChart.valueOf(JSON.stringify(chart, null, 2));
-        }
-      );
+      //   watch(
+      //     () => props.chart,
+      //     (chart) => {
+      //   oweChart.valueOf(JSON.stringify(chart, null, 2));
+      // chartVal.value=chart;
+      //     }
+      //   );
 
-      watch(
-        () => props.border,
-        (border) => {
-          oweBorder.valueOf(JSON.stringify(border, null, 2));
-        }
-      );
+      //   watch(
+      //     () => props.border,
+      //     (border) => {
+      //   oweBorder.valueOf(JSON.stringify(border, null, 2));
+      //   borderVal=border;
+      //     }
+      //   );
 
-      watch(
-        () => props.basic,
-        (basic) => {
-          oweBasic.valueOf(JSON.stringify(basic, null, 2));
-        }
-      );
+      //   watch(
+      //     () => props.basic,
+      //     (basic) => {
+      //       oweBasic.valueOf(JSON.stringify(basic, null, 2));
+      //     }
+      //   );
     });
 
     return {
       uiBorderConfig,
       uiChartConfig,
       uiBasicConfig,
+      borderVal,
+      chartVal,
       doUpdateBorder() {
-        context.emit("update:border", JSON.parse(oweBorder.valueOf()));
+        //   源码界面
+        if (this.borderFlag == "source") {
+          let val = JSON.parse(oweBorder.valueOf());
+          context.emit("update:border", val);
+          this.borderVal = val;
+        }
+
+        // 设计界面
+        else {
+        }
       },
       doUpdateChart() {
-        context.emit("update:chart", JSON.parse(oweChart.valueOf()));
+        //   源码界面
+        if (this.chartFlag == "source") {
+          let val = JSON.parse(oweChart.valueOf());
+          context.emit("update:chart", val);
+          this.chartVal = val;
+        }
+
+        // 设计界面
+        else {
+        }
       },
       doUpdateBasic() {
         context.emit("update:basic", JSON.parse(oweBasic.valueOf()));
       },
-      flag: ref("basic"),
+      borderFlag: ref("design"),
+      chartFlag: ref("design"),
+      flag: ref("border"),
     };
   },
 });
@@ -157,7 +222,30 @@ export default defineComponent({
   }
   & > div {
     & > div {
-      max-height: 400px;
+      border: 1px solid gray;
+      margin: 10px;
+      & > div {
+        height: 300px;
+        overflow: auto;
+      }
+      & > span {
+        display: block;
+        background-color: gray;
+        & > button {
+          border: none;
+          outline: none;
+          padding: 3px 5px;
+          &[active="yes"] {
+            background-color: white;
+          }
+          &[active="no"] {
+            cursor: pointer;
+            background-color: rgb(180, 179, 179);
+            color: white;
+            outline: 1px solid white;
+          }
+        }
+      }
     }
     & > button {
       display: block;
