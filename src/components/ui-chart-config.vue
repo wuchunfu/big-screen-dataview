@@ -141,28 +141,28 @@ export default defineComponent({
         ...oweConfig,
       });
 
-      //   watch(
-      //     () => props.chart,
-      //     (chart) => {
-      //   oweChart.valueOf(JSON.stringify(chart, null, 2));
-      // chartVal.value=chart;
-      //     }
-      //   );
+      watch(
+        () => props.chart,
+        (chart) => {
+          oweChart.valueOf(JSON.stringify(chart, null, 2));
+          chartVal.value = chart;
+        }
+      );
 
-      //   watch(
-      //     () => props.border,
-      //     (border) => {
-      //   oweBorder.valueOf(JSON.stringify(border, null, 2));
-      //   borderVal=border;
-      //     }
-      //   );
+      watch(
+        () => props.border,
+        (border) => {
+          oweBorder.valueOf(JSON.stringify(border, null, 2));
+          borderVal.value = border;
+        }
+      );
 
-      //   watch(
-      //     () => props.basic,
-      //     (basic) => {
-      //       oweBasic.valueOf(JSON.stringify(basic, null, 2));
-      //     }
-      //   );
+      watch(
+        () => props.basic,
+        (basic) => {
+          oweBasic.valueOf(JSON.stringify(basic, null, 2));
+        }
+      );
     });
 
     return {
@@ -200,7 +200,7 @@ export default defineComponent({
       },
       borderFlag: ref("design"),
       chartFlag: ref("design"),
-      flag: ref("border"),
+      flag: ref("chart"),
     };
   },
 });

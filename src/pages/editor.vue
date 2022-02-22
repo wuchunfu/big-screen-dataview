@@ -111,7 +111,7 @@
           <span @click="currentConfigShow = false">X</span>
         </h2>
         <ui-chart-config
-          v-if="currentIndex != -1"
+          v-show="currentIndex != -1"
           :chart="
             dataView.chartlist[currentIndex] &&
             dataView.chartlist[currentIndex].chart
