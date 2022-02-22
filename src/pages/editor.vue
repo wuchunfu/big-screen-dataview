@@ -51,6 +51,8 @@
                 >关闭</span
               >
             </div>
+            <!-- 辅助拖拽 -->
+            <div v-show="currentIndex == index" class="help-move"></div>
             <!-- 边框 -->
             <div class="fill-view">
               <lazy-component
