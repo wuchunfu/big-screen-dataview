@@ -13,6 +13,7 @@
     "dependencies": {
         "@hai2007/browser": "^0.2.0",
         "@hai2007/style": "^0.3.0",
+        "@hai2007/tool": "^1.2.0",
         "@hai2007/xhr": "^0.1.2",
         "colors-picker": "^0.3.2",
         "echarts": "^5.2.2",

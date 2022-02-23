@@ -3,15 +3,20 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref, watch } from "vue";
+import { isFunction } from "@hai2007/tool";
 
 export default defineComponent({
   props: ["is", "data"],
   setup(props) {
     let instance = ref(null);
     let toInstance = (ClazzFun) => {
-      ClazzFun().then((data) => {
-        instance.value = data.default;
-      });
+      if (isFunction(ClazzFun)) {
+        ClazzFun().then((data) => {
+          instance.value = data.default;
+        });
+      } else {
+        instance.value = undefined;
+      }
     };
 
     toInstance(props.is);

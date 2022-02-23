@@ -19,7 +19,12 @@
 
     <div v-show="flag == 'border'">
       <div>
-        <div v-show="borderFlag == 'design'">{{ borderVal }}</div>
+        <div v-if="borderVal && borderFlag == 'design'">
+          <ui-panel-config
+            v-model="borderVal"
+            :configScheml="borderScheml"
+          ></ui-panel-config>
+        </div>
         <div v-show="borderFlag == 'source'" ref="uiBorderConfig"></div>
 
         <span>
@@ -43,7 +48,29 @@
 
     <div v-show="flag == 'chart'">
       <div>
-        <div v-show="chartFlag == 'design'">{{ chartVal }}</div>
+        <div v-show="chartFlag == 'design'">
+          <div class="panel-nav">
+            <span
+              :active="chartVal && chartVal.type == 'define' ? 'yes' : 'no'"
+              @click="chartVal.type = 'define'"
+              >自定义</span
+            >
+            <span
+              :active="chartVal && chartVal.type == 'echart' ? 'yes' : 'no'"
+              @click="chartVal.type = 'echart'"
+              >EChart</span
+            >
+          </div>
+          <div v-if="chartVal && chartVal.type == 'define'">
+            <ui-panel-config
+              v-model="chartVal"
+              :configScheml="chartScheml"
+            ></ui-panel-config>
+          </div>
+          <div v-if="chartVal && chartVal.type == 'echart'">
+            <ui-echart-config v-model="chartVal"></ui-echart-config>
+          </div>
+        </div>
         <div v-show="chartFlag == 'source'" ref="uiChartConfig"></div>
 
         <span>
@@ -69,6 +96,12 @@
 <script lang="ts">
 import { defineComponent, ref, watch, onMounted } from "vue";
 const OpenWebEditor = require("open-web-editor");
+
+import uiPanelConfig from "./ui-panel-config.vue";
+import uiEchartConfig from "./ui-echart-config.vue";
+
+import borderScheml from "../config/border/index";
+import chartScheml from "../config/chart/index";
 
 let oweConfig = {
   // 设置颜色（可选）
@@ -181,6 +214,7 @@ export default defineComponent({
 
         // 设计界面
         else {
+          oweBorder.valueOf(JSON.stringify(borderVal.value, null, 2));
         }
       },
       doUpdateChart() {
@@ -193,6 +227,7 @@ export default defineComponent({
 
         // 设计界面
         else {
+          oweChart.valueOf(JSON.stringify(chartVal.value, null, 2));
         }
       },
       doUpdateBasic() {
@@ -201,7 +236,13 @@ export default defineComponent({
       borderFlag: ref("design"),
       chartFlag: ref("design"),
       flag: ref("chart"),
+      borderScheml: ref(borderScheml),
+      chartScheml: ref(chartScheml),
     };
+  },
+  components: {
+    uiPanelConfig,
+    uiEchartConfig,
   },
 });
 </script>
@@ -227,6 +268,26 @@ export default defineComponent({
       & > div {
         height: 300px;
         overflow: auto;
+        & > .panel-nav {
+          text-align: center;
+          margin: 10px 0;
+          & > span {
+            background-color: rgb(235, 228, 228);
+            margin: 5px 0;
+            display: inline-block;
+            font-size: 12px;
+            padding: 3px 10px;
+            outline: 2px solid rgb(118, 113, 113);
+            &[active="no"] {
+              background-color: rgb(118, 113, 113);
+              color: white;
+              cursor: pointer;
+            }
+            &[active="yes"] {
+              font-weight: 800;
+            }
+          }
+        }
       }
       & > span {
         display: block;
