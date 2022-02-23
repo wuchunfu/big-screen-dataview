@@ -52,12 +52,18 @@
           <div class="panel-nav">
             <span
               :active="chartVal && chartVal.type == 'define' ? 'yes' : 'no'"
-              @click="chartVal.type = 'define'"
+              @click="
+                chartVal.type = 'define';
+                chartVal.options = {};
+              "
               >自定义</span
             >
             <span
               :active="chartVal && chartVal.type == 'echart' ? 'yes' : 'no'"
-              @click="chartVal.type = 'echart'"
+              @click="
+                chartVal.type = 'echart';
+                chartVal.options = {};
+              "
               >EChart</span
             >
           </div>
@@ -215,6 +221,7 @@ export default defineComponent({
         // 设计界面
         else {
           oweBorder.valueOf(JSON.stringify(borderVal.value, null, 2));
+          context.emit("update:border", JSON.parse(oweBorder.valueOf()));
         }
       },
       doUpdateChart() {
@@ -228,6 +235,7 @@ export default defineComponent({
         // 设计界面
         else {
           oweChart.valueOf(JSON.stringify(chartVal.value, null, 2));
+          context.emit("update:chart", JSON.parse(oweChart.valueOf()));
         }
       },
       doUpdateBasic() {
