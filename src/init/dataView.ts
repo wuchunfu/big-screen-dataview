@@ -22,7 +22,7 @@ let dataView: DataView = {
                 type: "define",
                 name: "uiChartType1",
                 options: {
-                    title: "· 可视化大屏探索和实践 ·"
+                    title: "可视化大屏探索和实践"
                 }
             }
         },

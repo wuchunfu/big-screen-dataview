@@ -52,16 +52,18 @@ export default defineComponent({
 </script>
 <style lang="scss" scoped>
 .title {
-  height: 100%;
+  height: 50px;
   background-image: url("../../../image/title-line.png");
-  background-size: auto 80%;
-  background-position: center center;
+  background-size: auto 40px;
+  background-position: center top;
   background-repeat: no-repeat;
   white-space: nowrap;
+  overflow: hidden;
+  user-select: none;
   & > span {
     color: #03a9f4;
     display: inline-block;
-    width: calc(50vw - 300px);
+    width: calc(50% - 300px);
     vertical-align: middle;
     font-size: 12px;
     & > a {
@@ -80,11 +82,11 @@ export default defineComponent({
         background-image: url("../../../image/logo.png");
         background-repeat: no-repeat;
         display: inline-block;
-        height: 60px;
+        height: 50px;
         vertical-align: middle;
         width: 30px;
         background-position: center center;
-        background-size: 60% auto;
+        background-size: 20px auto;
       }
     }
   }
