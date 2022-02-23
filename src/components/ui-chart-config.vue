@@ -1,15 +1,18 @@
 <template>
   <div class="ui-chart-config">
     <nav>
-      <span @click="flag = 'basic'" :active="flag == 'basic' ? 'yes' : 'no'"
-        >基本</span
-      >|
-      <span @click="flag = 'border'" :active="flag == 'border' ? 'yes' : 'no'"
-        >边框</span
-      >|
-      <span @click="flag = 'chart'" :active="flag == 'chart' ? 'yes' : 'no'"
-        >图表</span
-      >
+      <span
+        @click="flag = 'basic'"
+        :active="flag == 'basic' ? 'yes' : 'no'"
+      >基本</span>|
+      <span
+        @click="flag = 'border'"
+        :active="flag == 'border' ? 'yes' : 'no'"
+      >边框</span>|
+      <span
+        @click="flag = 'chart'"
+        :active="flag == 'chart' ? 'yes' : 'no'"
+      >图表</span>
     </nav>
 
     <div v-show="flag == 'basic'">
@@ -264,6 +267,7 @@ export default defineComponent({
       padding: 6px 10px;
       cursor: pointer;
       font-weight: 800;
+      display: inline-block;
       &[active="yes"] {
         border-bottom: 2px solid red;
       }
