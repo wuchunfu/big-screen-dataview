@@ -90,7 +90,10 @@
     <!-- 选项四：data -->
     <fieldset v-if="'data' in config.options">
       <legend>数据</legend>
-      <textarea v-model="config.options.data"></textarea>
+      <textarea
+        v-model="config.options.data"
+        @change="updateJsonValue($event, 'options.data')"
+      ></textarea>
     </fieldset>
     <!-- 选项五：xAxis -->
     <fieldset v-if="'xAxis' in config.options">
