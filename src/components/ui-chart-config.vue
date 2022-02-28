@@ -1,18 +1,15 @@
 <template>
   <div class="ui-chart-config">
     <nav>
-      <span
-        @click="flag = 'basic'"
-        :active="flag == 'basic' ? 'yes' : 'no'"
-      >基本</span>|
-      <span
-        @click="flag = 'border'"
-        :active="flag == 'border' ? 'yes' : 'no'"
-      >边框</span>|
-      <span
-        @click="flag = 'chart'"
-        :active="flag == 'chart' ? 'yes' : 'no'"
-      >图表</span>
+      <span @click="flag = 'basic'" :active="flag == 'basic' ? 'yes' : 'no'"
+        >基本</span
+      >|
+      <span @click="flag = 'border'" :active="flag == 'border' ? 'yes' : 'no'"
+        >边框</span
+      >|
+      <span @click="flag = 'chart'" :active="flag == 'chart' ? 'yes' : 'no'"
+        >图表</span
+      >
     </nav>
 
     <div v-show="flag == 'basic'">
@@ -62,12 +59,12 @@
               >自定义</span
             >
             <span
-              :active="chartVal && chartVal.type == 'echart' ? 'yes' : 'no'"
+              :active="chartVal && chartVal.type == 'plainchart' ? 'yes' : 'no'"
               @click="
-                chartVal.type = 'echart';
+                chartVal.type = 'plainchart';
                 chartVal.options = {};
               "
-              >EChart</span
+              >Plain Chart</span
             >
           </div>
           <div v-if="chartVal && chartVal.type == 'define'">
@@ -76,8 +73,8 @@
               :configScheml="chartScheml"
             ></ui-panel-config>
           </div>
-          <div v-if="chartVal && chartVal.type == 'echart'">
-            <ui-echart-config v-model="chartVal"></ui-echart-config>
+          <div v-if="chartVal && chartVal.type == 'plainchart'">
+            <ui-plainchart-config v-model="chartVal"></ui-plainchart-config>
           </div>
         </div>
         <div v-show="chartFlag == 'source'" ref="uiChartConfig"></div>
@@ -107,7 +104,7 @@ import { defineComponent, ref, watch, onMounted } from "vue";
 const OpenWebEditor = require("open-web-editor");
 
 import uiPanelConfig from "./ui-panel-config.vue";
-import uiEchartConfig from "./ui-echart-config.vue";
+import uiPlainchartConfig from "./ui-plainchart-config.vue";
 
 import borderScheml from "../config/border/index";
 import chartScheml from "../config/chart/index";
@@ -253,7 +250,7 @@ export default defineComponent({
   },
   components: {
     uiPanelConfig,
-    uiEchartConfig,
+    uiPlainchartConfig,
   },
 });
 </script>

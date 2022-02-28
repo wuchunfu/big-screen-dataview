@@ -1,8 +1,7 @@
 import { defineComponent, ref, onMounted, onBeforeUnmount, watch } from 'vue'
-import * as echarts from 'echarts'
+const PlainChart = require('plain-chart')
+const Clunch = require('clunch')
 import observeResize from '../observeResize'
-import xhtml from '@hai2007/browser/xhtml'
-import theme from './theme'
 
 export default defineComponent({
     props: {
@@ -11,25 +10,21 @@ export default defineComponent({
             default: () => ({})
         }
     },
-    setup(props, { expose }) {
+    setup(props) {
 
         const elRef = ref<HTMLElement>()
         let chartRef
 
         // 创建图表对象
         onMounted(() => {
-            echarts.registerTheme('big-screen-dataview', theme)
-            chartRef = echarts.init(elRef.value, 'big-screen-dataview')
-            chartRef.setOption(props.options)
+
+            let myChart = PlainChart.init(Clunch, elRef.value)
+
+            chartRef = myChart.new(props.options)
 
             // 开始监听画布大小改变
             stopResize = observeResize(elRef.value, () => {
-
-                let options = JSON.parse(JSON.stringify(chartRef.getOption()))
-
-                chartRef.clear()
-                chartRef.resize(xhtml.size(elRef.value))
-                chartRef.setOption(options)
+                chartRef.setOption({})
             })
         })
 
@@ -37,19 +32,10 @@ export default defineComponent({
 
         // 销毁图表对象
         onBeforeUnmount(() => {
-            chartRef.dispose()
-            chartRef = null
 
             // 取消监听
             stopResize()
         })
-
-        // // 对外暴露接口
-        // expose({
-        //     setOption(options) {
-        //         chartRef.setOption(options)
-        //     }
-        // })
 
         watch(
             () => props.options,
