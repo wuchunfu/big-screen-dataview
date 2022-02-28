@@ -4,6 +4,34 @@
     <fieldset v-if="'grid' in config.options">
       <legend>外边距</legend>
       <ul>
+        <li v-if="'x' in config.options.grid">
+          <label>X:</label>
+          <input v-model="config.options.grid.x" @change="updateValue" />
+          <span class="delete" @click="deleteItem('options.grid', 'x')"
+            >删除</span
+          >
+        </li>
+        <li v-if="'y' in config.options.grid">
+          <label>Y:</label>
+          <input v-model="config.options.grid.y" @change="updateValue" />
+          <span class="delete" @click="deleteItem('options.grid', 'y')"
+            >删除</span
+          >
+        </li>
+        <li v-if="'width' in config.options.grid">
+          <label>宽:</label>
+          <input v-model="config.options.grid.width" @change="updateValue" />
+          <span class="delete" @click="deleteItem('options.grid', 'width')"
+            >删除</span
+          >
+        </li>
+        <li v-if="'height' in config.options.grid">
+          <label>高:</label>
+          <input v-model="config.options.grid.height" @change="updateValue" />
+          <span class="delete" @click="deleteItem('options.grid', 'height')"
+            >删除</span
+          >
+        </li>
         <li v-if="'left' in config.options.grid">
           <label>左:</label>
           <input v-model="config.options.grid.left" @change="updateValue" />
@@ -35,12 +63,36 @@
       </ul>
       <span
         class="add"
-        @click="addItem('options.grid', ['left', 'right', 'top', 'bottom'], 0)"
+        @click="
+          addItem(
+            'options.grid',
+            ['x', 'y', 'width', 'height', 'left', 'right', 'top', 'bottom'],
+            0
+          )
+        "
         >新增</span
       >
       <span class="delete" @click="deleteItem('options', 'grid')">删除</span>
     </fieldset>
-    <!-- 选项二：xAxis -->
+    <!-- 选项二：title -->
+    <!-- 选项三：type -->
+    <fieldset v-if="'type' in config.options">
+      <legend>类型</legend>
+      <select v-model="config.options.type" @change="updateValue">
+        <option value="bar">柱状图</option>
+        <option value="line">折线图</option>
+        <option value="pie">饼图</option>
+        <option value="ring">环图</option>
+        <option value="map">地图</option>
+        <option value="tree">树图</option>
+      </select>
+    </fieldset>
+    <!-- 选项四：data -->
+    <fieldset v-if="'data' in config.options">
+      <legend>数据</legend>
+      <textarea v-model="config.options.data"></textarea>
+    </fieldset>
+    <!-- 选项五：xAxis -->
     <fieldset v-if="'xAxis' in config.options">
       <legend>横刻度尺</legend>
       <ul>
@@ -59,7 +111,7 @@
       >
       <span class="delete" @click="deleteItem('options', 'xAxis')">删除</span>
     </fieldset>
-    <!-- 选项三：yAxis -->
+    <!-- 选项六：yAxis -->
     <fieldset v-if="'yAxis' in config.options">
       <legend>纵刻度尺</legend>
       <ul>
@@ -78,9 +130,36 @@
       >
       <span class="delete" @click="deleteItem('options', 'yAxis')">删除</span>
     </fieldset>
+    <!-- 选项七：tree -->
+    <fieldset v-if="'tree' in config.options">
+      <legend>树图</legend>
+      <ul>
+        <li v-if="'direction' in config.options.tree">
+          <label>类型：</label>
+          <select v-model="config.options.tree.direction" @change="updateValue">
+            <option value="LR">左到右</option>
+            <option value="RL">右到左</option>
+            <option value="BT">下到上</option>
+            <option value="TB">上到下</option>
+            <option value="cicle">圆形</option>
+          </select>
+          <span class="delete">删除</span>
+        </li>
+      </ul>
+      <span class="add" @click="addItem('options.tree', ['direction'], '')"
+        >新增</span
+      >
+      <span class="delete" @click="deleteItem('options', 'yAxis')">删除</span>
+    </fieldset>
     <span
       class="add"
-      @click="addItem('options', ['grid', 'xAxis', 'yAxis'], {})"
+      @click="
+        addItem(
+          'options',
+          ['grid', 'type', 'data', 'xAxis', 'yAxis', 'tree'],
+          {}
+        )
+      "
       >新增</span
     >
   </div>
@@ -187,6 +266,13 @@ export default defineComponent({
   & > fieldset {
     margin: 0 10px 10px 10px;
     position: relative;
+    border-radius: 5px;
+    border: 1px solid #b2b2bd;
+    outline: none;
+    & > textarea,
+    > select {
+      width: 100%;
+    }
     &:hover {
       & > .add,
       > .delete {
