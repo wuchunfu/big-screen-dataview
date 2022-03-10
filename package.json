@@ -1,7 +1,7 @@
 {
     "name": "big-screen-dataview",
-    "version": "0.3.0",
-    "description": "基于vue3+ts搭建的搭配可视化项目，使用image2d、image3d、echart、plain-chart等多种绘图方式支持。",
+    "version": "0.2.1",
+    "description": "基于vue3+ts搭建的搭配可视化项目，使用image2d、image3d、echart等多种绘图方式支持。",
     "scripts": {
         "dev": "vue-cli-service serve",
         "build": "vue-cli-service build"
@@ -15,12 +15,11 @@
         "@hai2007/style": "^0.3.0",
         "@hai2007/tool": "^1.2.0",
         "@hai2007/xhr": "^0.1.2",
-        "clunch": "^2.3.6",
         "colors-picker": "^0.3.2",
+        "echarts": "^5.3.1",
         "image2d": "^1.16.3",
         "image3d": "^3.3.1",
         "open-web-editor": "^0.3.2",
-        "plain-chart": "^1.0.2",
         "vue": "^3.0.0",
         "vue-router": "^4.0.0-0",
         "vuex": "^4.0.2"
@@ -36,7 +35,6 @@
         "@vue/compiler-sfc": "^3.0.0",
         "sass": "^1.26.5",
         "sass-loader": "^8.0.2",
-        "tslib": "^2.3.1",
         "typescript": "^4.5.4"
     },
     "author": "你好2007",

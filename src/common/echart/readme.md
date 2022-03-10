@@ -1,8 +1,8 @@
-# plain-chart
+# echart
 
 ```html
 <div>
-    <plain-chart :options="options" ref='mychart'></plain-chart>
+    <echart :options="options" ref='mychart'></echart>
 </div>
 ```
 
@@ -26,10 +26,21 @@ div{
         setup() {
             return {
                 options:ref({
-                    // https://clunch-contrib.github.io/chart/#/api/options?fixed=top
+                    // https://echarts.apache.org/zh/option.html#title
                 })
             }
         }
     })
 </script>
 ```
+
+如果图表的配置后续有改变:
+
+~~this.$refs.mychart.setOption({~~
+
+~~// todo~~
+
+~~})~~
+
+直接修改双向绑定的options即可。
+

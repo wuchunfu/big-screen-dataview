@@ -63,10 +63,10 @@
               </lazy-component>
             </div>
             <!-- 图表 -->
-            <plain-chart
+            <echart
               :options="item.chart.options"
-              v-if="item.chart.type == 'plainchart'"
-            ></plain-chart>
+              v-if="item.chart.type == 'echart'"
+            ></echart>
             <div class="fill-view" v-if="item.chart.type == 'define'">
               <lazy-component
                 :is="chartLazy[item.chart.name]"
@@ -238,7 +238,7 @@ export default defineComponent({
             top: 0,
           },
           border: {
-            name: "none",
+            name: "uiBorderType1",
             options: {},
           },
           chart: {

@@ -9,7 +9,7 @@ export class Border {
 export class Chart {
     // 边框有类似，
     // 自定义：define
-    // plainchart:Plain-Chart
+    // echart:echart
     type: string
 
     // 如果是自定义组件，
