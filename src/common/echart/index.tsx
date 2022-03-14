@@ -3,6 +3,7 @@ import * as echarts from 'echarts'
 import observeResize from '../observeResize'
 import xhtml from '@hai2007/browser/xhtml'
 import theme from './theme'
+import mapLazy from '../map-lazy'
 
 export default defineComponent({
     props: {
@@ -16,11 +17,35 @@ export default defineComponent({
         const elRef = ref<HTMLElement>()
         let chartRef
 
+        let loadMapData = options => {
+            return new Promise((resolve, reject) => {
+
+                if (options.series && options.series[0] && options.series[0].type == 'map') {
+                    let mapName = options.series[0].map
+
+                    if (mapName in mapLazy) {
+                        mapLazy[mapName]().then(data => {
+                            echarts.registerMap(mapName, data)
+                            resolve("")
+                        })
+                    } else {
+                        reject()
+                    }
+
+                } else {
+                    resolve("")
+                }
+            })
+        }
+
         // 创建图表对象
         onMounted(() => {
             echarts.registerTheme('big-screen-dataview', theme)
             chartRef = echarts.init(elRef.value, 'big-screen-dataview')
-            chartRef.setOption(props.options)
+
+            loadMapData(props.options).then(() => {
+                chartRef.setOption(props.options)
+            })
 
             // 开始监听画布大小改变
             stopResize = observeResize(elRef.value, () => {
@@ -44,17 +69,12 @@ export default defineComponent({
             stopResize()
         })
 
-        // // 对外暴露接口
-        // expose({
-        //     setOption(options) {
-        //         chartRef.setOption(options)
-        //     }
-        // })
-
         watch(
             () => props.options,
             (options) => {
-                chartRef.setOption(options)
+                loadMapData(options).then(() => {
+                    chartRef.setOption(options)
+                })
             }
         );
 

@@ -239,7 +239,9 @@ export default defineComponent({
           },
           border: {
             name: "uiBorderType1",
-            options: {},
+            options: {
+              title: "标题",
+            },
           },
           chart: {
             type: "none",

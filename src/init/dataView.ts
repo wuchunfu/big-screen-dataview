@@ -2,9 +2,9 @@ import DataView from '../types/DataView';
 
 let dataView: DataView = {
     background: {
-        type: "color",
+        type: "image",
         color: "#000000",
-        image: "",
+        image: "./background.png",
     },
     chartlist: [
         {
@@ -52,6 +52,7 @@ let dataView: DataView = {
                     xAxis: {
                         type: 'value'
                     },
+                    "tooltip": {},
                     series: [
                         {
                             data: [120, 200, 150, 80, 70, 110, 130],
@@ -80,9 +81,9 @@ let dataView: DataView = {
                     angleAxis: {},
                     radiusAxis: {
                         type: 'category',
-                        data: ['Mon', 'Tue', 'Wed', 'Thu'],
-                        z: 10
+                        data: ['Mon', 'Tue', 'Wed', 'Thu']
                     },
+                    "tooltip": {},
                     polar: {},
                     series: [
                         {
@@ -137,6 +138,7 @@ let dataView: DataView = {
                 options: {
                     xAxis: {},
                     yAxis: {},
+                    "tooltip": {},
                     series: [
                         {
                             symbolSize: 20,
@@ -188,26 +190,37 @@ let dataView: DataView = {
                 options: {
                     series: [
                         {
-                            name: 'Nightingale Chart',
-                            type: 'pie',
-                            radius: [30, 70],
-                            center: ['50%', '50%'],
-                            roseType: 'area',
-                            itemStyle: {
-                                borderRadius: 8
-                            },
+                            type: 'map',
+                            map: 'hk',
                             data: [
-                                { value: 40, name: 'rose 1' },
-                                { value: 38, name: 'rose 2' },
-                                { value: 32, name: 'rose 3' },
-                                { value: 30, name: 'rose 4' },
-                                { value: 28, name: 'rose 5' },
-                                { value: 26, name: 'rose 6' },
-                                { value: 22, name: 'rose 7' },
-                                { value: 18, name: 'rose 8' }
+                                { name: '中西区', value: 20057.34 },
+                                { name: '湾仔区', value: 15477.48 },
+                                { name: '东区', value: 31686.1 },
+                                { name: '南区', value: 6992.6 },
+                                { name: '油尖旺区', value: 44045.49 },
+                                { name: '深水埗区', value: 40689.64 },
+                                { name: '九龙城区', value: 37659.78 },
+                                { name: '黄大仙区', value: 45180.97 },
+                                { name: '观塘区', value: 55204.26 },
+                                { name: '葵青区', value: 21900.9 },
+                                { name: '荃湾区', value: 4918.26 },
+                                { name: '屯门区', value: 5881.84 },
+                                { name: '元朗区', value: 4178.01 },
+                                { name: '北区', value: 2227.92 },
+                                { name: '大埔区', value: 2180.98 },
+                                { name: '沙田区', value: 9172.94 },
+                                { name: '西贡区', value: 3368 },
+                                { name: '离岛区', value: 806.98 }
                             ]
                         }
-                    ]
+                    ],
+                    "tooltip": {},
+                    "visualMap": {
+                        "max": "60000",
+                        "min": "0",
+                        "top": "middle",
+                        "left": "20"
+                    }
                 }
             }
         },
@@ -272,6 +285,7 @@ let dataView: DataView = {
                     yAxis: {
                         type: 'value'
                     },
+                    "tooltip": {},
                     series: [
                         {
                             data: [820, 932, 901, 934, 1290, 1330, 1320],

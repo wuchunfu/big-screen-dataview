@@ -73,6 +73,30 @@ this.$store.commit('openDialog', {
 
 此时，页面中已经可以使用这些组件了，只不过，为了在```选中配置```界面可选，还需要在```config/```下的```border```和```chart```文件夹中进行登记。
 
+### 关于地图
+
+比如echart中配置地图的话，需要提前安装对应的```geoJSON```包，如果还没有安装，可以去[datapool](https://www.npmjs.com/org/datapool)中寻找，如果没有找到，可以去[issue](https://github.com/hai2007/datapool/issues)给留言说明。
+
+按照好了以后，就需要去```./src/map-lazy.js```中添加，添加完毕后，比如香港：
+
+```js
+export default {
+    hk: () => import('@datapool/hk.geojson')
+};
+```
+
+然后，echart这样配置就可以使用了：
+
+```js
+{
+    ......
+    type: "map",
+    map: "hk",
+}
+```
+
+> 有任何疑惑都可以去给我们[留言](https://github.com/hai2007/big-screen-dataview/issues)哦~，当然，也欢迎你帮助我们改进此项目。
+
 开源协议
 ---------------------------------------
 [MIT](https://github.com/hai2007/big-screen-dataview/blob/master/LICENSE)
