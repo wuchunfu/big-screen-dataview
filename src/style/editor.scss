@@ -6,7 +6,6 @@
         left: 0;
         top: 0;
     }
-
     .help-move {
         width: 100%;
         height: 100%;
@@ -16,14 +15,12 @@
         z-index: 1;
         cursor: move;
     }
-
     .btn-list {
         position: absolute;
         z-index: 3;
         background-color: white;
         padding: 2px;
         border-radius: 5px;
-
         &>span {
             font-size: 0;
             display: inline-block;
@@ -35,21 +32,17 @@
             border-radius: 50%;
             vertical-align: top;
             cursor: pointer;
-
             &.config {
                 background-image: url('../image/config.png');
             }
-
             &.delete {
                 background-image: url('../image/delete.png');
             }
-
             &.close {
                 background-image: url('../image/close.png');
             }
         }
     }
-
     .fixed-btn {
         position: fixed;
         z-index: 4;
@@ -60,27 +53,28 @@
         background-repeat: no-repeat;
         font-size: 0;
         cursor: pointer;
-
         &.add-btn {
             right: 60px;
             width: 30px;
             background-image: url('../image/add.png');
         }
-
         &.config-btn {
             right: 90px;
             width: 50px;
             background-image: url('../image/setting.png');
         }
+        &.download-btn {
+            right: 25px;
+            width: 30px;
+            background-image: url('../image/download.png');
+        }
     }
-
     &>div {
         &>div {
             &.container {
                 position: relative;
                 overflow: hidden;
                 height: 100vh;
-
                 &>div {
                     position: relative;
                     z-index: 1;
@@ -88,12 +82,10 @@
                     width: 100%;
                     background-size: cover !important;
                     background-position: center center !important;
-
                     &>div {
                         &.active {
                             background-color: #ffffff55;
                             z-index: 1;
-
                             &>.resize {
                                 display: inline-block;
                                 width: 30px;
@@ -111,7 +103,6 @@
                         }
                     }
                 }
-
                 &:after {
                     --lineStart: 4%;
                     --lineEnd: 96%;
@@ -128,7 +119,6 @@
                     background-image: linear-gradient(0deg, var(--color) var(--lineStart), transparent var(--lineStart), transparent var(--lineEnd), var(--color) var(--lineEnd)), linear-gradient(-90deg, var(--color) var(--lineStart), transparent var(--lineStart), transparent var(--lineEnd), var(--color) var(--lineEnd)), linear-gradient(45deg, var(--color) var(--bgStart), transparent var(--bgStart), transparent var(--bgEnd), var(--color) var(--bgEnd)), linear-gradient(-45deg, var(--color) var(--bgStart), transparent var(--bgStart), transparent var(--bgEnd), var(--color) var(--bgEnd));
                 }
             }
-
             &.config {
                 width: 300px;
                 overflow: auto;
@@ -141,7 +131,6 @@
                 box-shadow: 0 0 13px 0 #607d8b;
                 border-radius: 5px;
                 right: 50px;
-
                 &>h2 {
                     background-color: #b1c3c1;
                     background-size: auto 80%;
@@ -153,7 +142,6 @@
                     user-select: none;
                     cursor: move;
                     background-image: url('../image/logo.png');
-
                     &>span {
                         float: right;
                         width: 30px;
@@ -161,7 +149,6 @@
                         font-family: monospace;
                         cursor: pointer;
                         font-weight: 200;
-
                         &:hover {
                             background-color: red;
                             color: white;

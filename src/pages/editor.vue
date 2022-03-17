@@ -12,14 +12,12 @@
   >
     <div>
       <div class="container">
-        <div
-          :style="{
+        <div :style="{
             background:
               dataView.background.type == 'color'
                 ? dataView.background.color
                 : 'url(' + dataView.background.image + ')',
-          }"
-        >
+          }">
           <!-- 一个个小图表 -->
           <div
             v-for="(item, index) in dataView.chartlist"
@@ -40,19 +38,28 @@
               @mousedown.stop="mousedownResizeChart($event)"
             ></div>
             <!-- 按钮 -->
-            <div class="btn-list" v-show="currentIndex == index">
+            <div
+              class="btn-list"
+              v-show="currentIndex == index"
+            >
               <span
                 class="config"
                 @click.stop="currentConfigShow = !currentConfigShow"
-                >配置</span
-              >
-              <span class="delete" @click.stop="deleteItem(index)">删除</span>
-              <span class="close" @mousedown.stop="currentIndex = -1"
-                >关闭</span
-              >
+              >配置</span>
+              <span
+                class="delete"
+                @click.stop="deleteItem(index)"
+              >删除</span>
+              <span
+                class="close"
+                @mousedown.stop="currentIndex = -1"
+              >关闭</span>
             </div>
             <!-- 辅助拖拽 -->
-            <div v-show="currentIndex == index" class="help-move"></div>
+            <div
+              v-show="currentIndex == index"
+              class="help-move"
+            ></div>
             <!-- 边框 -->
             <div class="fill-view">
               <lazy-component
@@ -67,7 +74,10 @@
               :options="item.chart.options"
               v-if="item.chart.type == 'echart'"
             ></echart>
-            <div class="fill-view" v-if="item.chart.type == 'define'">
+            <div
+              class="fill-view"
+              v-if="item.chart.type == 'define'"
+            >
               <lazy-component
                 :is="chartLazy[item.chart.name]"
                 :data="item.chart.options"
@@ -76,6 +86,11 @@
           </div>
         </div>
       </div>
+      <div
+        class="download-btn fixed-btn"
+        title="点击我下载当前JSON"
+        @click="downloadChart"
+      ></div>
       <div
         class="add-btn fixed-btn"
         title="点击我新增小图形"
@@ -97,9 +112,7 @@
           全局配置
           <span @click="allConfigShow = false">X</span>
         </h2>
-        <ui-view-config
-          v-model:background="dataView.background"
-        ></ui-view-config>
+        <ui-view-config v-model:background="dataView.background"></ui-view-config>
       </div>
       <div
         class="config chart"
@@ -249,6 +262,18 @@ export default defineComponent({
             options: {},
           },
         });
+      },
+
+      // 下载全局json
+      downloadChart() {
+        let Link = document.createElement("a");
+        Link.download = "big-screen-dataview.json";
+        Link.style.display = "none";
+        let blob = new Blob([JSON.stringify(dataView)]);
+        Link.href = URL.createObjectURL(blob);
+        document.body.appendChild(Link);
+        Link.click();
+        document.body.removeChild(Link);
       },
 
       // 控制图表移动
