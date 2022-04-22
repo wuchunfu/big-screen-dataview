@@ -245,7 +245,7 @@ export default defineComponent({
         context.emit("update:basic", JSON.parse(oweBasic.valueOf()));
       },
       borderFlag: ref("design"),
-      chartFlag: ref("design"),
+      chartFlag: ref("source"),
       flag: ref("chart"),
       borderScheml: ref(borderScheml),
       chartScheml: ref(chartScheml),
