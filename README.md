@@ -77,7 +77,7 @@ this.$store.commit('openDialog', {
 
 比如echart中配置地图的话，需要提前安装对应的```geoJSON```包，如果还没有安装，可以去[datapool](https://www.npmjs.com/org/datapool)中寻找，如果没有找到，可以去[issue](https://github.com/hai2007/datapool/issues)给留言说明。
 
-按照好了以后，就需要去```./src/map-lazy.js```中添加，添加完毕后，比如香港：
+安装好了以后，就需要去```./src/map-lazy.js```中添加，添加完毕后，比如香港：
 
 ```js
 export default {
