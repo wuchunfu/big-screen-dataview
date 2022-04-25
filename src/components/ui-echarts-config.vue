@@ -1,5 +1,5 @@
 <template>
-  <div class="ui-echart-config">
+  <div class="ui-echarts-config">
     <h4 style="padding: 30px; color: red">Tips:配置界面未完成！</h4>
   </div>
 </template>
@@ -18,6 +18,6 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
-.ui-echart-config {
+.ui-echarts-config {
 }
 </style>

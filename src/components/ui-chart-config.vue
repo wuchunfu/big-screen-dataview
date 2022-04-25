@@ -62,12 +62,12 @@
               >自定义</span
             >
             <span
-              :active="chartVal && chartVal.type == 'echart' ? 'yes' : 'no'"
+              :active="chartVal && chartVal.type == 'echarts' ? 'yes' : 'no'"
               @click="
-                chartVal.type = 'echart';
+                chartVal.type = 'echarts';
                 chartVal.options = {};
               "
-              >EChart</span
+              >ECharts</span
             >
           </div>
           <div v-if="chartVal && chartVal.type == 'define'">
@@ -76,8 +76,8 @@
               :configScheml="chartScheml"
             ></ui-panel-config>
           </div>
-          <div v-if="chartVal && chartVal.type == 'echart'">
-            <ui-echart-config v-model="chartVal"></ui-echart-config>
+          <div v-if="chartVal && chartVal.type == 'echarts'">
+            <ui-echarts-config v-model="chartVal"></ui-echarts-config>
           </div>
         </div>
         <div v-show="chartFlag == 'source'" ref="uiChartConfig"></div>
@@ -107,7 +107,7 @@ import { defineComponent, ref, watch, onMounted } from "vue";
 const OpenWebEditor = require("open-web-editor");
 
 import uiPanelConfig from "./ui-panel-config.vue";
-import uiEchartConfig from "./ui-echart-config.vue";
+import uiEchartsConfig from "./ui-echarts-config.vue";
 
 import borderScheml from "../config/border/index";
 import chartScheml from "../config/chart/index";
@@ -253,7 +253,7 @@ export default defineComponent({
   },
   components: {
     uiPanelConfig,
-    uiEchartConfig,
+    uiEchartsConfig,
   },
 });
 </script>

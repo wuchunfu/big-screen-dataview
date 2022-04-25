@@ -63,10 +63,10 @@
               </lazy-component>
             </div>
             <!-- 图表 -->
-            <echart
+            <echarts
               :options="item.chart.options"
-              v-if="item.chart.type == 'echart'"
-            ></echart>
+              v-if="item.chart.type == 'echarts'"
+            ></echarts>
             <div class="fill-view" v-if="item.chart.type == 'define'">
               <lazy-component
                 :is="chartLazy[item.chart.name]"

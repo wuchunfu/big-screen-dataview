@@ -20,21 +20,49 @@ export default defineComponent({
         let loadMapData = options => {
             return new Promise((resolve, reject) => {
 
-                if (options.series && options.series[0] && options.series[0].type == 'map') {
-                    let mapName = options.series[0].map
+                let maps = [];
+                let promises = [];
 
-                    if (mapName in mapLazy) {
-                        mapLazy[mapName]().then(data => {
-                            echarts.registerMap(mapName, data)
-                            resolve("")
-                        })
-                    } else {
-                        reject()
+                if (options.series) {
+                    for (let series of options.series) {
+                        if (series.type == 'map') {
+                            let mapName = series.map;
+                            if (maps.indexOf(mapName) < 0) {
+                                maps.push(mapName)
+                                promises.push(new Promise(resolve => {
+                                    mapLazy[mapName]().then(data => {
+                                        echarts.registerMap(mapName, data.default)
+                                        resolve("")
+                                    })
+                                }))
+
+                            }
+                        }
                     }
-
-                } else {
-                    resolve("")
                 }
+
+                if (options.geo) {
+                    for (let geo of options.geo) {
+
+                        let mapName = geo.map;
+                        if (maps.indexOf(mapName) < 0) {
+                            maps.push(mapName)
+                            promises.push(new Promise(resolve => {
+                                mapLazy[mapName]().then(data => {
+                                    echarts.registerMap(mapName, data.default)
+                                    resolve("")
+                                })
+                            }))
+
+                        }
+
+                    }
+                }
+
+                Promise.all(promises).then(() => {
+                    resolve("")
+                })
+
             })
         }
 

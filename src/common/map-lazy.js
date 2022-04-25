@@ -5,5 +5,5 @@
  */
 
 export default {
-    hk: () => import('@datapool/hk.geojson')
+    china: () => import('@datapool/china.geojson')
 };

@@ -36,7 +36,7 @@ npm run build
 
 为了方便使用，我们对依赖的库或别的依赖进行了二次封装：
 
-- [EChart](./src/common/echart/readme.md) ：用于提供常用的图表
+- [ECharts](./src/common/echarts/readme.md) ：用于提供常用的图表
 - [Image2D](./src/common/image2d/readme.md) ：绘制一些特殊的图表
 - [Image3D](./src/common/image3d/readme.md) ：用于个性化的3D图形绘制
 
@@ -75,7 +75,7 @@ this.$store.commit('openDialog', {
 
 ### 关于地图
 
-比如echart中配置地图的话，需要提前安装对应的```geoJSON```包，如果还没有安装，可以去[datapool](https://www.npmjs.com/org/datapool)中寻找，如果没有找到，可以去[issue](https://github.com/hai2007/datapool/issues)给留言说明。
+比如echarts中配置地图的话，需要提前安装对应的```geoJSON```包，如果还没有安装，可以去[datapool](https://www.npmjs.com/org/datapool)中寻找，如果没有找到，可以去[issue](https://github.com/hai2007/datapool/issues)给留言说明。
 
 安装好了以后，就需要去```./src/map-lazy.js```中添加，添加完毕后，比如香港：
 
@@ -85,7 +85,7 @@ export default {
 };
 ```
 
-然后，echart这样配置就可以使用了：
+然后，echarts这样配置就可以使用了：
 
 ```js
 {
