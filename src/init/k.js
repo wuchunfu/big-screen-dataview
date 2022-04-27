@@ -130,7 +130,7 @@ export default {
     grid: {
         left: '10%',
         right: '10%',
-        bottom: '15%'
+        bottom: '30'
     },
     xAxis: {
         type: 'category',
@@ -138,6 +138,11 @@ export default {
         boundaryGap: false,
         axisLine: { onZero: false },
         splitLine: { show: false },
+        axisLabel: {
+            textStyle: {
+                fontSize: 7
+            }
+        },
         min: 'dataMin',
         max: 'dataMax'
     },
@@ -145,22 +150,13 @@ export default {
         scale: true,
         splitArea: {
             show: false
+        },
+        axisLabel: {
+            textStyle: {
+                fontSize: 7
+            }
         }
     },
-    dataZoom: [
-        {
-            type: 'inside',
-            start: 50,
-            end: 100
-        },
-        {
-            show: true,
-            type: 'slider',
-            top: '90%',
-            start: 50,
-            end: 100
-        }
-    ],
     series: [
         {
             name: '日K',

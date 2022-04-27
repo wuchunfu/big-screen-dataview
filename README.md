@@ -1,6 +1,6 @@
 <p align='center'>
     <a href='https://hai2007.github.io/big-screen-dataview/' target='_blank'>
-        <img src='./review.png'>
+        <img src='./review.jpg'>
     </a>
 </p>
 
@@ -81,7 +81,7 @@ this.$store.commit('openDialog', {
 
 ```js
 export default {
-    hk: () => import('@datapool/hk.geojson')
+    china: () => import('@datapool/china.geojson')
 };
 ```
 
@@ -91,7 +91,7 @@ export default {
 {
     ......
     type: "map",
-    map: "hk",
+    map: "china",
 }
 ```
 

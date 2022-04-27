@@ -72,9 +72,10 @@ export default defineComponent({
     }
     &.center {
       width: 600px;
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 600;
       text-align: center;
+      color: white;
     }
     &.left {
       text-align: right;

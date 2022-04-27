@@ -10,24 +10,25 @@ export default {
         top: 50,
         bottom: 30,
         right: 10,
-        left: 50
-    },
-    toolbox: {
-        feature: {
-            dataZoom: {
-                yAxisIndex: 'none'
-            },
-            restore: {},
-            saveAsImage: {}
-        }
+        left: 40
     },
     xAxis: {
         type: 'time',
-        boundaryGap: false
+        boundaryGap: false,
+        axisLabel:{
+            textStyle:{
+                fontSize:7
+            }
+        },
     },
     yAxis: {
         type: 'value',
-        boundaryGap: [0, '100%']
+        boundaryGap: [0, '100%'],
+        axisLabel:{
+            textStyle:{
+                fontSize:7
+            }
+        },
     },
     series: [
         {

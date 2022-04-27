@@ -127,7 +127,12 @@ export default {
         max: 31,
         splitLine: {
             show: false
-        }
+        },
+        axisLabel: {
+            textStyle: {
+                fontSize: 7
+            }
+        },
     },
     yAxis: {
         type: 'value',
@@ -139,7 +144,12 @@ export default {
         },
         splitLine: {
             show: false
-        }
+        },
+        axisLabel: {
+            textStyle: {
+                fontSize: 7
+            }
+        },
     },
     visualMap: [
         {

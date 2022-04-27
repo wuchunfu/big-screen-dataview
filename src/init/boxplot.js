@@ -42,14 +42,24 @@ export default {
         },
         splitLine: {
             show: false
-        }
+        },
+        axisLabel:{
+            textStyle:{
+                fontSize:7
+            }
+        },
     },
     yAxis: {
         type: 'value',
         name: 'km/s minus 299,000',
         splitArea: {
             show: false
-        }
+        },
+        axisLabel:{
+            textStyle:{
+                fontSize:7
+            }
+        },
     },
     series: [
         {

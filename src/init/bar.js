@@ -17,6 +17,9 @@ export default function getBar(rulers, datas) {
             },
             axisLabel: {
                 color: "white",
+                textStyle:{
+                    fontSize:7
+                }
             },
         },
         yAxis: {
@@ -26,6 +29,9 @@ export default function getBar(rulers, datas) {
             },
             axisLabel: {
                 color: "white",
+                textStyle:{
+                    fontSize:7
+                }
             },
         },
         tooltip: {},
