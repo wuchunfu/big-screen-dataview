@@ -1,11 +1,11 @@
-<p align='center'>
+# [可视化大屏](https://hai2007.github.io/big-screen-dataview/)
+基于vue3+ts搭建的搭配可视化项目，使用image2d、image3d、echart等多种绘图方式支持。
+
+<p>
     <a href='https://hai2007.github.io/big-screen-dataview/' target='_blank'>
         <img src='./review.jpg'>
     </a>
 </p>
-
-# [big-screen-dataview](https://hai2007.github.io/big-screen-dataview/)
-基于vue3+ts搭建的搭配可视化项目，使用image2d、image3d、echart等多种绘图方式支持。
 
 ## Issues
 使用的时候遇到任何问题或有好的建议，请点击进入[issue](https://github.com/hai2007/big-screen-dataview/issues)，欢迎参与维护！

@@ -1,34 +1,120 @@
 export default {
-    "tooltip": {
-        "trigger": "item"
+    "visualMap": {
+        "show": false,
+        "max": 360,
+        "min": "0",
+        "top": "middle",
+        "left": "20",
+        "seriesIndex": 0,
+        "color": ['#05425e', "white",]
     },
     "geo": [
         {
             "map": "china",
             "center": [107, 36],
-            "label": {
-                "emphasis": {
-                    "show": false
-                }
-            },
-            "roam": false,
-            "zoom": 1.6,
-            "itemStyle": {
-                "normal": {
-                    "areaColor": "#05425e",
-                    "borderColor": "rgba(112,187,252,.5)"
-                },
-                "emphasis": {
-                    "areaColor": "#0cabf5"
-                }
-            }
+            "zoom": 1.6
         }
     ],
     "series": [
         {
+            "type": "map",
+            "map": "china",
+            "data": [
+                { "name": "江苏省", "value": 168 },
+                { "name": "浙江省", "value": 28 },
+                { "name": "四川省", "value": 158 },
+                { "name": "青海省", "value": 258 },
+                { "name": "新疆维吾尔自治区", "value": 58 },
+                { "name": "西藏自治区", "value": 158 },
+                { "name": "内蒙古自治区", "value": 158 },
+                { "name": "黑龙江省", "value": 258 },
+                { "name": "广东省", "value": 258 },
+                { "name": "河南省", "value": 158 },
+                { "name": "山西省", "value": 58 },
+                { "name": "河北省", "value": 150 },
+                { "name": "山东省", "value": 238 },
+                { "name": "湖南省", "value": 338 },
+                { "name": "湖北省", "value": 138 },
+                { "name": "广西壮族自治区", "value": 38 },
+                { "name": "云南省", "value": 138 },
+                { "name": "甘肃省", "value": 228 },
+                { "name": "宁夏回族自治区", "value": 38 },
+                { "name": "陕西省", "value": 18 }
+            ],
+            label: {
+                emphasis: {
+                    show: true
+                }
+            },
+            center: [107, 36],
+            roam: false,
+            zoom: 1.6,
+            itemStyle: {
+                normal: {
+                    areaColor: 'white',
+                    borderColor: 'rgba(112,187,252,.5)'
+                },
+                emphasis: {
+                    areaColor: 'pink'
+                }
+            }
+        }, {
+
+            // 曲线连接
+            type: 'lines',
+            zlevel: 1,
+            symbol: ['none'],
+            symbolSize: 10,
+            lineStyle: {
+                normal: {
+                    color: "#dde86d",
+                    width: 5,
+                    curveness: 0.2
+                }
+            },
+            effect: {
+                show: true,
+                period: 6,
+                trailLength: 0,
+                symbol: 'path://M1705.06,1318.313v-89.254l-319.9-221.799l0.073-208.063c0.521-84.662-26.629-121.796-63.961-121.491c-37.332-0.305-64.482,36.829-63.961,121.491l0.073,208.063l-319.9,221.799v89.254l330.343-157.288l12.238,241.308l-134.449,92.931l0.531,42.034l175.125-42.917l175.125,42.917l0.531-42.034l-134.449-92.931l12.238-241.308L1705.06,1318.313z',
+                symbolSize: 30,
+                color: 'yellow'
+            },
+            data: [{
+                coords: [[116.46, 39.92], [104.065735, 30.659462]]
+            }, {
+                coords: [[116.46, 39.92], [118.767413, 32.041544]]
+            }, {
+                coords: [[116.46, 39.92], [121.509062, 25.044332]]
+            }, {
+                coords: [[116.46, 39.92], [126.642464, 45.756967]]
+            }]
+        }, {
+
+            type: 'effectScatter',
+            coordinateSystem: 'geo',
+            zlevel: 2, // 相当于z-indexs
+            data: [{
+                value: [116.46, 39.92]
+            }, {
+                value: [104.065735, 30.659462]
+            }, {
+                value: [118.767413, 32.041544]
+            }, {
+                value: [121.509062, 25.044332]
+            }, {
+                value: [126.642464, 45.756967]
+            }],
+            symbolSize: 10,
+            rippleEffect: {
+                "period": 3,
+                "scale": 5,
+                "brushType": "stroke"
+            },
+        }, {
             "type": "scatter",
             "coordinateSystem": "geo",
-            "symbolSize": 4,
+            symbolSize: 3,
             "label": {
                 "normal": {
                     "position": "right",
@@ -40,7 +126,7 @@ export default {
             },
             "itemStyle": {
                 "normal": {
-                    "color": "#ffeb7b"
+                    "color": "blue"
                 }
             },
             "data": [
@@ -81,7 +167,7 @@ export default {
                     "value": [
                         123.97,
                         47.33,
-                        14
+                        19
                     ]
                 },
                 {
@@ -1563,6 +1649,56 @@ export default {
                         46.58,
                         279
                     ]
+                }
+            ]
+        }, {
+
+            type: 'lines',
+            zlevel: 3,
+            symbol: 'circle',
+            symbolSize: [5, 5],
+            color: '#ff8003',
+            opacity: 1,
+            label: {
+                show: true,
+                padding: [10, 10],
+                color: '#000',
+                backgroundColor: {
+                    image: "./label.png"
+                },
+                width: 40,
+                height: 40,
+                textStyle: {
+                    lineHeight: 20,
+                }
+            },
+            lineStyle: {
+                type: 'solid',
+                color: '#fff',
+                width: 0.5,
+                opacity: 1,
+
+            },
+            data: [
+                {
+                    "coords": [[116.24, 39.55], [110, 46.55]],
+                    "value": "北京\n13%"
+                },
+                {
+                    "coords": [[104.065735, 30.659462], [95, 26]],
+                    "value": "四川\n9%"
+                },
+                {
+                    "coords": [[118.767413, 32.041544], [125, 35]],
+                    "value": "江苏\n27%"
+                },
+                {
+                    "coords": [[121.509062, 25.044332], [130, 23]],
+                    "value": "台湾\n1%"
+                },
+                {
+                    "coords": [[126.642464, 45.756967], [130, 47]],
+                    "value": "黑龙江\n34%"
                 }
             ]
         }
