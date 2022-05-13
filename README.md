@@ -1,5 +1,5 @@
 # [可视化大屏](https://hai2007.github.io/big-screen-dataview/)
-基于vue3+ts搭建的搭配可视化项目，使用image2d、image3d、echart等多种绘图方式支持。
+基于vue3+ts搭建的搭配可视化项目，使用image2d、image3d、echarts等多种绘图方式支持。
 
 <p>
     <a href='https://hai2007.github.io/big-screen-dataview/' target='_blank'>

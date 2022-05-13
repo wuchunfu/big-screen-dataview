@@ -1,6 +1,6 @@
 {
   "name": "big-screen-dataview",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "基于vue3+ts搭建的搭配可视化项目，使用image2d、image3d、echarts等多种绘图方式支持。",
   "scripts": {
     "dev": "vue-cli-service serve",
@@ -12,15 +12,16 @@
   },
   "dependencies": {
     "@datapool/china.geojson": "^1.2.0",
-    "@hai2007/browser": "^0.2.0",
+    "@hai2007/browser": "^0.3.5",
     "@hai2007/style": "^0.3.0",
     "@hai2007/tool": "^1.2.0",
     "@hai2007/xhr": "^0.1.2",
     "colors-picker": "^0.3.2",
     "echarts": "^5.3.2",
     "image2d": "^1.16.4",
-    "image3d": "^3.4.0",
+    "image3d": "^3.4.1",
     "open-web-editor": "^0.3.2",
+    "three-geometry": "^1.4.1",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.2"

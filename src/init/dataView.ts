@@ -100,12 +100,13 @@ let dataView: DataView = {
             "border": {
                 name: "uiBorderType1",
                 options: {
-                    title: "常吃的事物"
+                    title: "喜欢的几何体"
                 }
             },
             "chart": {
-                "type": "echarts",
-                "options": getBar(['苹果', '橘子', '菠萝', '西红柿'], [500, 500, 350, 640])
+                type: "define",
+                name: "uiChartType4",
+                options: {}
             }
         }, {
             "basic": {
