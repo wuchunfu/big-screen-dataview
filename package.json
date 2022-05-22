@@ -1,6 +1,6 @@
 {
   "name": "big-screen-dataview",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "基于vue3+ts搭建的搭配可视化项目，使用image2d、image3d、echarts等多种绘图方式支持。",
   "scripts": {
     "dev": "vue-cli-service serve",

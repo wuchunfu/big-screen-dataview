@@ -26,7 +26,7 @@
             :key="item"
             style="position: absolute"
             :class="currentIndex == index ? 'active' : ''"
-            @mousedown="mousedownMoveChart($event, index)"
+            @mousedown.stop="mousedownMoveChart($event, index)"
             :style="{
               left: item.basic.left + '%',
               top: item.basic.top + '%',
