@@ -100,13 +100,20 @@ let dataView: DataView = {
             "border": {
                 name: "uiBorderType1",
                 options: {
-                    title: "喜欢的几何体"
+                    title: "消费分析"
                 }
             },
             "chart": {
                 type: "define",
                 name: "uiChartType4",
-                options: {}
+                options: {
+                    value: [
+                        [20, 34, 10, 38],
+                        [40, 35, 30, 50],
+                        [31, 38, 33, 44],
+                        [38, 15, 5, 42]
+                    ]
+                }
             }
         }, {
             "basic": {
